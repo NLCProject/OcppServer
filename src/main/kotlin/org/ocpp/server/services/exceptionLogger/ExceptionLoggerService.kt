@@ -1,4 +1,4 @@
-package org.smart.home.simulator.services.exceptionLogger
+package org.ocpp.server.services.exceptionLogger
 
 import org.isc.utils.enums.SportsclubExceptionI18nKey
 import org.isc.utils.genericCrudl.services.exceptionHandler.AbstractExceptionLogger

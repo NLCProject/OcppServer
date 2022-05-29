@@ -1,6 +1,6 @@
 package org.ocpp.server.services.events.interfaces
 
-import org.ocpp.client.event.server.ClientConnectedEvent
+import org.ocpp.client.event.server.request.HeartbeatRequestEvent
 import org.springframework.context.event.EventListener
 import org.springframework.transaction.annotation.Transactional
 
@@ -8,11 +8,11 @@ import org.springframework.transaction.annotation.Transactional
  *
  */
 @Transactional
-interface IClientRegisterService {
+interface IHeartbeatService {
 
     /**
      *
      */
-    @EventListener(ClientConnectedEvent::class)
-    fun onClientConnected(event: ClientConnectedEvent)
+    @EventListener(HeartbeatRequestEvent::class)
+    fun heartbeat(event: HeartbeatRequestEvent)
 }

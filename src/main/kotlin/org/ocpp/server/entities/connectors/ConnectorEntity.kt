@@ -1,16 +1,16 @@
-package org.ocpp.server.entities.smartHome
+package org.ocpp.server.entities.connectors
 
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
-import org.ocpp.server.entities.connectors.ConnectorEntity
+import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import javax.persistence.*
 
 /**
  *
  */
 @Entity
-@Table(name = "smart_home")
-class SmartHomeEntity : IscEntity() {
+@Table(name = "connector")
+class ConnectorEntity : IscEntity() {
 
     /**
      *
@@ -44,32 +44,15 @@ class SmartHomeEntity : IscEntity() {
     var name: String = String()
 
     /**
-     *
+     * Max size is 20 chars. Is defined by the client.
      */
     @Column
-    var lastHeartBeatTimestamp: Long = System.currentTimeMillis()
+    var idTag: String = String()
 
     /**
      *
      */
-    @Column
-    var imageId: String = String()
-
-    /**
-     *
-     */
-    @Column
-    var identifier: String = String()
-
-    /**
-     *
-     */
-    @Column
-    var sessionIndex: String = String()
-
-    /**
-     *
-     */
-    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "smartHome")
-    var connectors: List<ConnectorEntity> = emptyList()
+    @ManyToOne(cascade = [CascadeType.MERGE])
+    @JoinColumn(name = "smartHome_id")
+    lateinit var smartHome: SmartHomeEntity
 }
