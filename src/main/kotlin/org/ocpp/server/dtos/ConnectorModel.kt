@@ -18,16 +18,10 @@ class ConnectorModel : IscModel() {
     var name: String = String()
 
     /**
-     * Max size is 20 chars. Is defined by the client.
-     */
-    @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
-    var idTag: String = String()
-
-    /**
      * Equal to ID tag.
      */
     @ValidateContent(type = ValidationType.NotZeroOrLower, required = true)
-    var connectorId: Int = 0
+    var externalId: Int = 0
 
     /**
      *

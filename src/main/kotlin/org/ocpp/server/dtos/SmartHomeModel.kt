@@ -32,5 +32,10 @@ class SmartHomeModel : IscModel() {
     /**
      *
      */
+    var authorized: Boolean = false
+
+    /**
+     *
+     */
     var image: ImageModel? = null
 }

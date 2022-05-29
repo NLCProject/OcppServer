@@ -6,7 +6,7 @@ import org.isc.utils.enums.UserLanguage
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.serialization.JsonSerialization
 import org.isc.utils.utils.Ids
-import org.ocpp.server.configuration.Organisation
+import org.ocpp.client.Organisation
 import org.ocpp.server.services.authentication.interfaces.IAuthenticationService
 import org.springframework.stereotype.Service
 

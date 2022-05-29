@@ -70,6 +70,12 @@ class SmartHomeEntity : IscEntity() {
     /**
      *
      */
+    @Column
+    var authorized: Boolean = false
+
+    /**
+     *
+     */
     @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "smartHome")
     var connectors: List<ConnectorEntity> = emptyList()
 }

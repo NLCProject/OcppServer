@@ -46,16 +46,10 @@ class ConnectorEntity : IscEntity() {
     var name: String = String()
 
     /**
-     * Max size is 20 chars. Is defined by the client.
-     */
-    @Column
-    var idTag: String = String()
-
-    /**
      * Equal to ID tag.
      */
     @Column
-    var connectorId: String = String()
+    var externalId: Int = 0
 
     /**
      *

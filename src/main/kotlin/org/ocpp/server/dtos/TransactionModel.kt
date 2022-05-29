@@ -1,5 +1,6 @@
 package org.ocpp.server.dtos
 
+import eu.chargetime.ocpp.model.core.Reason
 import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
@@ -15,14 +16,24 @@ class TransactionModel : IscModel() {
     /**
      *
      */
-    @Column
+    @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
     var dateTimeStarted: String = String()
 
     /**
      *
      */
-    @Column
     var dateTimeStopped: String = String()
+
+    /**
+     *
+     */
+    var reasonToStop: Reason = Reason.Other
+
+    /**
+     *
+     */
+    @ValidateContent(type = ValidationType.NotZeroOrLower, required = true)
+    var externalId: Int = 0
 
     /**
      *

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional
  *
  */
 @Transactional
-interface IAuthorizeChargePointService {
+interface IAuthorizeService {
 
     /**
      *

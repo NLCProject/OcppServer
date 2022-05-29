@@ -1,5 +1,6 @@
 package org.ocpp.server.entities.transaction
 
+import eu.chargetime.ocpp.model.core.Reason
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity
@@ -49,6 +50,19 @@ class TransactionEntity : IscEntity() {
      */
     @Column
     var dateTimeStopped: String = String()
+
+    /**
+     *
+     */
+    @Column
+    var externalId: Int = 0
+
+    /**
+     *
+     */
+    @Column
+    @Enumerated
+    var reasonToStop: Reason = Reason.Other
 
     /**
      *

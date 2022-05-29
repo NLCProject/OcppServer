@@ -3,7 +3,7 @@ package org.ocpp.server.services.events
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.tests.CurrentUserFactory
 import org.ocpp.client.event.server.ClientSessionLostEvent
-import org.ocpp.server.configuration.Organisation
+import org.ocpp.client.Organisation
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
 import org.ocpp.server.services.events.interfaces.IClientUnregisterService

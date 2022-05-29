@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class ConnectorService @Autowired constructor(
-    repositoryService: ConnectorRepository,
+    private val repositoryService: ConnectorRepository,
     private val smartHomeRepository: SmartHomeRepository,
     private val transactionService: TransactionService,
     private val notificationService: NotificationService
@@ -20,6 +20,21 @@ class ConnectorService @Autowired constructor(
     entityClass = ConnectorEntity::class.java,
     repositoryService = repositoryService
 ) {
+
+    /**
+     *
+     */
+    fun findOrCreateConnector(externalId: Int, sessionIndex: String, currentUser: CurrentUser): ConnectorEntity {
+        val optional = repositoryService.findByExternalId(externalId = externalId)
+        if (optional.isPresent)
+            return optional.get()
+
+        val connector = ConnectorModel()
+        connector.externalId = externalId
+        connector.name = externalId.toString()
+        connector.smartHomeId = smartHomeRepository.findBySessionIndex(sessionIndex = sessionIndex).get().id
+        return saveEntity(model = connector, currentUser = currentUser)
+    }
 
     override fun preSave(
         model: ConnectorModel,
