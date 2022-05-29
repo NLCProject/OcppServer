@@ -2,50 +2,60 @@ package org.ocpp.server.dtos
 
 import eu.chargetime.ocpp.model.core.ChargePointErrorCode
 import eu.chargetime.ocpp.model.core.ChargePointStatus
+import eu.chargetime.ocpp.model.core.Location
+import eu.chargetime.ocpp.model.core.ValueFormat
 import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
+import javax.persistence.Column
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 
 /**
  *
  */
 @GenerateTsModel
-class NotificationModel : IscModel() {
+class SampledValueModel : IscModel() {
 
     /**
      *
      */
-    var status: ChargePointStatus = ChargePointStatus.Available
+    var valueData: String = String()
 
     /**
      *
      */
-    var errorCode: ChargePointErrorCode = ChargePointErrorCode.NoError
+    var contextData: String = String()
 
     /**
      *
      */
-    var info: String = String()
+    var formatData: ValueFormat = ValueFormat.Raw
 
     /**
      *
      */
-    var dateTimeCreated: String = String()
+    var measurand: String = String()
 
     /**
      *
      */
-    var vendorId: String = String()
+    var phaseData: String = String()
 
     /**
      *
      */
-    var vendorErrorCode: String = String()
+    var location: Location = Location.Body
+
+    /**
+     *
+     */
+    var unit: String = String()
 
     /**
      *
      */
     @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
-    var connectorId: String = String()
+    var meterValueId: String = String()
 }

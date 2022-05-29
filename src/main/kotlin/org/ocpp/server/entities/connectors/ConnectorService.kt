@@ -6,6 +6,7 @@ import org.isc.utils.models.CurrentUser
 import org.ocpp.server.dtos.ConnectorModel
 import org.ocpp.server.entities.notification.NotificationService
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
+import org.ocpp.server.entities.transaction.TransactionService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service
 class ConnectorService @Autowired constructor(
     repositoryService: ConnectorRepository,
     private val smartHomeRepository: SmartHomeRepository,
+    private val transactionService: TransactionService,
     private val notificationService: NotificationService
 ) : EntityService<ConnectorModel, ConnectorEntity>(
     entityClass = ConnectorEntity::class.java,
@@ -40,6 +42,7 @@ class ConnectorService @Autowired constructor(
 
     override fun preDelete(entity: ConnectorEntity, currentUser: CurrentUser) {
         entity.notifications.forEach { notificationService.deleteEntity(id = it.id, currentUser = currentUser) }
+        entity.transactions.forEach { transactionService.deleteEntity(id = it.id, currentUser = currentUser) }
     }
 
     override fun afterDelete(entity: ConnectorEntity, currentUser: CurrentUser) { }

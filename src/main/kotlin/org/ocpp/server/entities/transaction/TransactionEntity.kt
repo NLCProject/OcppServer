@@ -1,18 +1,17 @@
-package org.ocpp.server.entities.notification
+package org.ocpp.server.entities.transaction
 
-import eu.chargetime.ocpp.model.core.ChargePointErrorCode
-import eu.chargetime.ocpp.model.core.ChargePointStatus
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity
+import org.ocpp.server.entities.meterValue.MeterValueEntity
 import javax.persistence.*
 
 /**
  *
  */
 @Entity
-@Table(name = "notification")
-class NotificationEntity : IscEntity() {
+@Table(name = "transaction")
+class TransactionEntity : IscEntity() {
 
     /**
      *
@@ -43,39 +42,13 @@ class NotificationEntity : IscEntity() {
      *
      */
     @Column
-    var info: String = String()
+    var dateTimeStarted: String = String()
 
     /**
      *
      */
     @Column
-    var dateTimeCreated: String = String()
-
-    /**
-     *
-     */
-    @Column
-    var vendorId: String = String()
-
-    /**
-     *
-     */
-    @Column
-    var vendorErrorCode: String = String()
-
-    /**
-     *
-     */
-    @Column
-    @Enumerated(value = EnumType.STRING)
-    var status: ChargePointStatus = ChargePointStatus.Available
-
-    /**
-     *
-     */
-    @Column
-    @Enumerated(value = EnumType.STRING)
-    var errorCode: ChargePointErrorCode = ChargePointErrorCode.NoError
+    var dateTimeStopped: String = String()
 
     /**
      *
@@ -84,4 +57,9 @@ class NotificationEntity : IscEntity() {
     @JoinColumn(name = "connector_id")
     lateinit var connector: ConnectorEntity
 
+    /**
+     *
+     */
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "transaction")
+    var meterValues: List<MeterValueEntity> = emptyList()
 }

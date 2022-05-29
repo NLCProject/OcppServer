@@ -1,4 +1,4 @@
-package org.ocpp.server.entities.smartHome
+package org.ocpp.server.entities.transaction
 
 import org.isc.utils.genericCrudl.services.FilterService
 import org.isc.utils.models.CurrentUser
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class SmartHomeFilterService : FilterService<SmartHomeEntity>() {
+class TransactionFilterService: FilterService<TransactionEntity>() {
 
     override fun createSearchHintModel(filter: FilterParameters, currentUser: CurrentUser): List<SearchHintModel> =
         emptyList()

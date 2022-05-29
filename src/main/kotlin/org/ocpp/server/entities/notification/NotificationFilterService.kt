@@ -9,15 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class NotificationFilterService @Autowired constructor(
-    private val repositoryService: NotificationRepository
-) : FilterService<NotificationEntity>() {
+class NotificationFilterService : FilterService<NotificationEntity>() {
 
     override fun createSearchHintModel(filter: FilterParameters, currentUser: CurrentUser): List<SearchHintModel> =
-        repositoryService
-            .findAll(currentUser = currentUser)
-            .sortedBy { it.timestamp }
-            .map { SearchHintModel(id = it.id, name = it.errorCode.name) }
+        emptyList()
 
     override fun getFilterModels(currentUser: CurrentUser): FilterOptions = FilterOptions()
 }

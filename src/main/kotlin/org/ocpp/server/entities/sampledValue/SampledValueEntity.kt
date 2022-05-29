@@ -1,18 +1,18 @@
-package org.ocpp.server.entities.notification
+package org.ocpp.server.entities.sampledValue
 
-import eu.chargetime.ocpp.model.core.ChargePointErrorCode
-import eu.chargetime.ocpp.model.core.ChargePointStatus
+import eu.chargetime.ocpp.model.core.Location
+import eu.chargetime.ocpp.model.core.ValueFormat
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
-import org.ocpp.server.entities.connectors.ConnectorEntity
+import org.ocpp.server.entities.meterValue.MeterValueEntity
 import javax.persistence.*
 
 /**
  *
  */
 @Entity
-@Table(name = "notification")
-class NotificationEntity : IscEntity() {
+@Table(name = "sampled_value")
+class SampledValueEntity : IscEntity() {
 
     /**
      *
@@ -43,45 +43,50 @@ class NotificationEntity : IscEntity() {
      *
      */
     @Column
-    var info: String = String()
+    var valueData: String = String()
 
     /**
      *
      */
     @Column
-    var dateTimeCreated: String = String()
-
-    /**
-     *
-     */
-    @Column
-    var vendorId: String = String()
-
-    /**
-     *
-     */
-    @Column
-    var vendorErrorCode: String = String()
+    var contextData: String = String()
 
     /**
      *
      */
     @Column
     @Enumerated(value = EnumType.STRING)
-    var status: ChargePointStatus = ChargePointStatus.Available
+    var formatData: ValueFormat = ValueFormat.Raw
+
+    /**
+     *
+     */
+    @Column
+    var measurand: String = String()
+
+    /**
+     *
+     */
+    @Column
+    var phaseData: String = String()
 
     /**
      *
      */
     @Column
     @Enumerated(value = EnumType.STRING)
-    var errorCode: ChargePointErrorCode = ChargePointErrorCode.NoError
+    var location: Location = Location.Body
+
+    /**
+     *
+     */
+    @Column
+    var unit: String = String()
 
     /**
      *
      */
     @ManyToOne(cascade = [CascadeType.MERGE])
-    @JoinColumn(name = "connector_id")
-    lateinit var connector: ConnectorEntity
-
+    @JoinColumn(name = "meterValue_id")
+    lateinit var meterValue: MeterValueEntity
 }

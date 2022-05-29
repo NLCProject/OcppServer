@@ -1,8 +1,10 @@
-package org.ocpp.server.entities.connectors
+package org.ocpp.server.entities.meterValue
 
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
+import org.ocpp.server.entities.connectors.ConnectorEntity
 import org.ocpp.server.entities.notification.NotificationEntity
+import org.ocpp.server.entities.sampledValue.SampledValueEntity
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.transaction.TransactionEntity
 import javax.persistence.*
@@ -11,8 +13,8 @@ import javax.persistence.*
  *
  */
 @Entity
-@Table(name = "connector")
-class ConnectorEntity : IscEntity() {
+@Table(name = "meter_value")
+class MeterValueEntity : IscEntity() {
 
     /**
      *
@@ -43,36 +45,18 @@ class ConnectorEntity : IscEntity() {
      *
      */
     @Column
-    var name: String = String()
-
-    /**
-     * Max size is 20 chars. Is defined by the client.
-     */
-    @Column
-    var idTag: String = String()
-
-    /**
-     * Equal to ID tag.
-     */
-    @Column
-    var connectorId: String = String()
+    var dateTimeCreated: String = String()
 
     /**
      *
      */
     @ManyToOne(cascade = [CascadeType.MERGE])
-    @JoinColumn(name = "smartHome_id")
-    lateinit var smartHome: SmartHomeEntity
+    @JoinColumn(name = "transaction_id")
+    lateinit var transaction: TransactionEntity
 
     /**
      *
      */
-    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "connector")
-    var notifications: List<NotificationEntity> = emptyList()
-
-    /**
-     *
-     */
-    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "connector")
-    var transactions: List<TransactionEntity> = emptyList()
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "meterValue")
+    var sampledValues: List<SampledValueEntity> = emptyList()
 }

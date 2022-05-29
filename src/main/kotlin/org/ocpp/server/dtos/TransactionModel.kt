@@ -6,42 +6,25 @@ import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
+import javax.persistence.Column
 
 /**
  *
  */
 @GenerateTsModel
-class NotificationModel : IscModel() {
+class TransactionModel : IscModel() {
 
     /**
      *
      */
-    var status: ChargePointStatus = ChargePointStatus.Available
+    @Column
+    var dateTimeStarted: String = String()
 
     /**
      *
      */
-    var errorCode: ChargePointErrorCode = ChargePointErrorCode.NoError
-
-    /**
-     *
-     */
-    var info: String = String()
-
-    /**
-     *
-     */
-    var dateTimeCreated: String = String()
-
-    /**
-     *
-     */
-    var vendorId: String = String()
-
-    /**
-     *
-     */
-    var vendorErrorCode: String = String()
+    @Column
+    var dateTimeStopped: String = String()
 
     /**
      *

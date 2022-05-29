@@ -37,7 +37,7 @@ class StatusNotificationService @Autowired constructor(
         notification.status = event.request.status
         notification.errorCode = event.request.errorCode
         notification.info = event.request.info
-        notification.dateCreated = dateConversionService.buildDateString(date = event.request.timestamp)
+        notification.dateTimeCreated = dateConversionService.buildDateTimeString(date = event.request.timestamp)
         notification.vendorId = event.request.vendorId
         notification.vendorErrorCode = event.request.vendorErrorCode
         notificationService.saveEntity(model = notification, currentUser = currentUser)

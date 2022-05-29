@@ -25,7 +25,7 @@ class NotificationService @Autowired constructor(
         currentUser: CurrentUser
     ) {
         if (!isPresent)
-            entity.connector = connectorRepository.findByConnectorId(connectorId = model.connectorId).get()
+            entity.connector = connectorRepository.findById(id = model.connectorId, currentUser = currentUser)
     }
 
     override fun afterSave(

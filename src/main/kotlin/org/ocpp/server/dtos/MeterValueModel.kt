@@ -6,27 +6,13 @@ import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
+import javax.persistence.Column
 
 /**
  *
  */
 @GenerateTsModel
-class NotificationModel : IscModel() {
-
-    /**
-     *
-     */
-    var status: ChargePointStatus = ChargePointStatus.Available
-
-    /**
-     *
-     */
-    var errorCode: ChargePointErrorCode = ChargePointErrorCode.NoError
-
-    /**
-     *
-     */
-    var info: String = String()
+class MeterValueModel : IscModel() {
 
     /**
      *
@@ -36,16 +22,6 @@ class NotificationModel : IscModel() {
     /**
      *
      */
-    var vendorId: String = String()
-
-    /**
-     *
-     */
-    var vendorErrorCode: String = String()
-
-    /**
-     *
-     */
     @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
-    var connectorId: String = String()
+    var transactionId: String = String()
 }
