@@ -2,6 +2,7 @@ package org.ocpp.server.entities.connectors
 
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
+import org.ocpp.server.entities.notification.NotificationEntity
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import javax.persistence.*
 
@@ -50,9 +51,21 @@ class ConnectorEntity : IscEntity() {
     var idTag: String = String()
 
     /**
+     * Equal to ID tag.
+     */
+    @Column
+    var connectorId: String = String()
+
+    /**
      *
      */
     @ManyToOne(cascade = [CascadeType.MERGE])
     @JoinColumn(name = "smartHome_id")
     lateinit var smartHome: SmartHomeEntity
+
+    /**
+     *
+     */
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "connector")
+    var notifications: List<NotificationEntity> = emptyList()
 }

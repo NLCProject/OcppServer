@@ -15,4 +15,10 @@ class ConnectorRepository @Autowired constructor(
      *
      */
     fun findByIdTag(idTag: String): Optional<ConnectorEntity> = repository.findByIdTag(idTag = idTag)
+
+    /**
+     *
+     */
+    fun findByConnectorId(connectorId: Int): Optional<ConnectorEntity> =
+        repository.findByConnectorId(connectorId = connectorId)
 }

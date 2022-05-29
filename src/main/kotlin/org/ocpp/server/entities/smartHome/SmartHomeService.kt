@@ -4,6 +4,7 @@ import org.isc.utils.genericCrudl.models.Aspects
 import org.isc.utils.genericCrudl.services.EntityService
 import org.isc.utils.models.CurrentUser
 import org.ocpp.server.dtos.SmartHomeModel
+import org.ocpp.server.entities.connectors.ConnectorService
 import org.ocpp.server.entities.image.ImageService
 import org.ocpp.server.entities.image.interfaces.IImageCreatorService
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service
 @Service
 class SmartHomeService @Autowired constructor(
     repositoryService: SmartHomeRepository,
+    private val connectorService: ConnectorService,
     private val imageService: ImageService,
     private val imageCreatorService: IImageCreatorService
 ) : EntityService<SmartHomeModel, SmartHomeEntity>(
@@ -40,6 +42,7 @@ class SmartHomeService @Autowired constructor(
 
     override fun preDelete(entity: SmartHomeEntity, currentUser: CurrentUser) {
         imageService.deleteEntity(id = entity.imageId, currentUser = currentUser)
+        entity.connectors.forEach { connectorService.deleteEntity(id = it.id, currentUser = currentUser) }
     }
 
     override fun afterDelete(entity: SmartHomeEntity, currentUser: CurrentUser) { }

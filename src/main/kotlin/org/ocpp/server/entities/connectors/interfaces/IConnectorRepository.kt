@@ -13,4 +13,9 @@ interface IConnectorRepository : ICrudlRepository<ConnectorEntity> {
      *
      */
     fun findByIdTag(idTag: String): Optional<ConnectorEntity>
+
+    /**
+     *
+     */
+    fun findByConnectorId(connectorId: Int): Optional<ConnectorEntity>
 }
