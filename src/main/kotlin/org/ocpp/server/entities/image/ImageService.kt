@@ -4,8 +4,8 @@ import org.isc.utils.genericCrudl.models.Aspects
 import org.isc.utils.genericCrudl.services.EntityService
 import org.isc.utils.models.CurrentUser
 import org.ocpp.server.dtos.ImageModel
-import org.ocpp.server.enums.ImageSize
 import org.ocpp.server.entities.image.interfaces.IImageDecoderService
+import org.ocpp.server.enums.ImageSize
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

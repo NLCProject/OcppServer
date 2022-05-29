@@ -3,7 +3,6 @@ package org.ocpp.server.entities.transaction
 import org.isc.utils.genericCrudl.models.Aspects
 import org.isc.utils.genericCrudl.services.EntityService
 import org.isc.utils.models.CurrentUser
-import org.ocpp.server.dtos.ConnectorModel
 import org.ocpp.server.dtos.TransactionModel
 import org.ocpp.server.entities.connectors.ConnectorRepository
 import org.ocpp.server.entities.meterValue.MeterValueService

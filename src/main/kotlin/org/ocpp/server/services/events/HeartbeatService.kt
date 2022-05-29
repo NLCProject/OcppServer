@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 @Service
 class HeartbeatService @Autowired constructor(
     private val smartHomeRepository: SmartHomeRepository
-): IHeartbeatService {
+) : IHeartbeatService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 

@@ -2,8 +2,8 @@ package org.ocpp.server.entities.image
 
 import org.isc.utils.services.interfaces.IImageCodingService
 import org.isc.utils.services.interfaces.IImageResizeService
-import org.ocpp.server.enums.ImageSize
 import org.ocpp.server.entities.image.interfaces.IImageDecoderService
+import org.ocpp.server.enums.ImageSize
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

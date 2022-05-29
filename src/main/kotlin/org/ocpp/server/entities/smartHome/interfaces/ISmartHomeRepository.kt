@@ -9,7 +9,6 @@ import java.util.*
  */
 interface ISmartHomeRepository : ICrudlRepository<SmartHomeEntity> {
 
-
     /**
      *
      */

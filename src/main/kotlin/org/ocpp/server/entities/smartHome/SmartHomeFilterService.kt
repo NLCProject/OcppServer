@@ -5,7 +5,6 @@ import org.isc.utils.models.CurrentUser
 import org.isc.utils.models.filter.FilterOptions
 import org.isc.utils.models.filter.FilterParameters
 import org.isc.utils.models.filter.SearchHintModel
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service

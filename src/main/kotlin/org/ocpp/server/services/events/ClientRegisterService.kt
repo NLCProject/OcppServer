@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service
 class ClientRegisterService @Autowired constructor(
     private val smartHomeService: SmartHomeService,
     private val smartHomeRepository: SmartHomeRepository
-): IClientRegisterService {
+) : IClientRegisterService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 

@@ -5,7 +5,6 @@ import org.isc.utils.genericCrudl.services.EntityService
 import org.isc.utils.models.CurrentUser
 import org.ocpp.server.dtos.SampledValueModel
 import org.ocpp.server.entities.meterValue.MeterValueRepository
-import org.ocpp.server.entities.transaction.TransactionRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

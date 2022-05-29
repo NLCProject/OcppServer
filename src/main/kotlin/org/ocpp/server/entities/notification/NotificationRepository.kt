@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service
 
 @Service
 class NotificationRepository @Autowired constructor(
-   repository: NotificationRepository
+    repository: NotificationRepository
 ) : RepositoryService<NotificationEntity>(repository = repository)

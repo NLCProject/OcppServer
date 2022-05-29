@@ -18,7 +18,7 @@ class AuthorizeChargePointService @Autowired constructor(
     private val connectorService: ConnectorService,
     private val connectorRepository: ConnectorRepository,
     private val smartHomeRepository: SmartHomeRepository
-): IAuthorizeChargePointService {
+) : IAuthorizeChargePointService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 

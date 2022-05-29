@@ -18,7 +18,7 @@ class StatusNotificationService @Autowired constructor(
     private val connectorRepository: ConnectorRepository,
     private val notificationService: NotificationService,
     private val dateConversionService: IDateConversionService
-): IStatusNotificationService {
+) : IStatusNotificationService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 

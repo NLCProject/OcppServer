@@ -1,16 +1,11 @@
 package org.ocpp.server.dtos
 
-import eu.chargetime.ocpp.model.core.ChargePointErrorCode
-import eu.chargetime.ocpp.model.core.ChargePointStatus
 import eu.chargetime.ocpp.model.core.Location
 import eu.chargetime.ocpp.model.core.ValueFormat
 import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
-import javax.persistence.Column
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
 
 /**
  *

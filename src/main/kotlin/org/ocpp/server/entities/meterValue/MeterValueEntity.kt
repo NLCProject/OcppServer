@@ -2,10 +2,7 @@ package org.ocpp.server.entities.meterValue
 
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
-import org.ocpp.server.entities.connectors.ConnectorEntity
-import org.ocpp.server.entities.notification.NotificationEntity
 import org.ocpp.server.entities.sampledValue.SampledValueEntity
-import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.transaction.TransactionEntity
 import javax.persistence.*
 
