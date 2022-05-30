@@ -28,7 +28,7 @@ class ClientUnregisterService @Autowired constructor(
     }
 
     private fun removeClient(smartHome: SmartHomeEntity, currentUser: CurrentUser) {
-        logger.info("Removing client ID'${smartHome.id}'")
+        logger.info("Removing client ID '${smartHome.id}'")
         smartHomeRepository.deleteById(id = smartHome.id, currentUser = currentUser)
     }
 }

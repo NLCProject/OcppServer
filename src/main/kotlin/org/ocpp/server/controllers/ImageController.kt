@@ -57,13 +57,7 @@ class ImageController @Autowired constructor(
         @RequestHeader(Headers.Authorization) token: String
     ): ResponseEntity<*> =
         exceptionHandler.executeAnyOperation {
-            val currentUser = userAuthenticationService.isPermitted(
-                userId = userId,
-                token = token,
-                targetRoles = listOf(Role.General),
-                targetFeature = Feature.General
-            )
-
+            val currentUser = userAuthenticationService.isPermitted()
             entityService.deleteEntity(id = id, currentUser = currentUser)
         }
 
@@ -77,13 +71,7 @@ class ImageController @Autowired constructor(
         @RequestHeader(Headers.Authorization) token: String
     ): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
-            val currentUser = userAuthenticationService.isPermitted(
-                userId = userId,
-                token = token,
-                targetRoles = listOf(Role.General),
-                targetFeature = Feature.General
-            )
-
+            val currentUser = userAuthenticationService.isPermitted()
             modelService.findById(id = imageId, currentUser = currentUser)
         }
 }

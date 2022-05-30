@@ -1,16 +1,10 @@
 package org.ocpp.server.services.events
 
 import eu.chargetime.ocpp.model.core.MeterValue
-import eu.chargetime.ocpp.model.core.SampledValue
 import org.isc.utils.models.CurrentUser
-import org.isc.utils.services.dateTime.DateTimeUtil
-import org.isc.utils.services.dateTime.interfaces.IDateConversionService
 import org.isc.utils.tests.CurrentUserFactory
 import org.ocpp.client.Organisation
 import org.ocpp.client.event.server.request.MeterValuesRequestEvent
-import org.ocpp.server.dtos.MeterValueModel
-import org.ocpp.server.dtos.SampledValueModel
-import org.ocpp.server.entities.meterValue.MeterValueEntity
 import org.ocpp.server.entities.meterValue.MeterValueService
 import org.ocpp.server.entities.sampledValue.SampledValueService
 import org.ocpp.server.entities.transaction.TransactionEntity
@@ -22,7 +16,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class MeterValueHandlingService @Autowired constructor(
-    private val dateConversionService: IDateConversionService,
     private val meterValueService: MeterValueService,
     private val sampledValueService: SampledValueService,
     private val transactionRepository: TransactionRepository
@@ -48,32 +41,14 @@ class MeterValueHandlingService @Autowired constructor(
         currentUser: CurrentUser
     ) {
         logger.info("Saving meter value for new transaction")
-        val model = MeterValueModel()
-        model.transactionId = transaction.id
-        model.dateTimeCreated = dateConversionService.buildDateTimeString(date = DateTimeUtil.dateNow())
-
-        val entity = meterValueService.saveEntity(model = model, currentUser = currentUser)
+        val entity = meterValueService.createMeterValue(
+            transaction = transaction,
+            timestamp = meterValue.timestamp,
+            currentUser = currentUser
+        )
 
         meterValue.sampledValue.forEach {
-            createSampledValue(meterValueEntity = entity, sampledValue = it, currentUser = currentUser)
+            sampledValueService.createSampledValue(meterValue = entity, sampledValue = it, currentUser = currentUser)
         }
-    }
-
-    private fun createSampledValue(
-        meterValueEntity: MeterValueEntity,
-        sampledValue: SampledValue,
-        currentUser: CurrentUser
-    ) {
-        logger.info("Saving sampled value for existing transaction")
-        val model = SampledValueModel()
-        model.meterValueId = meterValueEntity.id
-        model.measurand = sampledValue.measurand
-        model.unit = sampledValue.unit
-        model.formatData = sampledValue.format
-        model.valueData = sampledValue.value
-        model.location = sampledValue.location
-        model.contextData = sampledValue.context
-        sampledValue.phase = sampledValue.phase
-        sampledValueService.saveEntity(model = model, currentUser = currentUser)
     }
 }

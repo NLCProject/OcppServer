@@ -8,6 +8,7 @@ import org.ocpp.server.dtos.SmartHomeModel
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
 import org.ocpp.server.entities.smartHome.SmartHomeService
+import org.ocpp.server.enums.SmartHomeStatus
 import org.ocpp.server.services.events.interfaces.IClientRegisterService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,16 +30,17 @@ class ClientRegisterService @Autowired constructor(
             identifier = event.information.identifier
         )
 
-        if (!optional.isPresent)
-            return registerNewClient(event = event, currentUser = currentUser)
+        if (optional.isPresent)
+            return updateConnectedClient(smartHome = optional.get(), event = event, currentUser = currentUser)
 
-        updateConnectedClient(smartHome = optional.get(), event = event, currentUser = currentUser)
+        registerNewClient(event = event, currentUser = currentUser)
     }
 
     private fun registerNewClient(event: ClientConnectedEvent, currentUser: CurrentUser) {
         logger.info("Registering new client with identifier '${event.information.identifier}'")
         val smartHome = SmartHomeModel()
         smartHome.name = event.information.identifier
+        smartHome.status = SmartHomeStatus.Online
         smartHome.identifier = event.information.identifier
         smartHome.sessionIndex = event.sessionIndex.toString()
         smartHomeService.saveEntity(model = smartHome, currentUser = currentUser)
@@ -52,6 +54,7 @@ class ClientRegisterService @Autowired constructor(
         logger.info("Updating existing client with identifier '${smartHome.identifier}'")
         smartHome.lastHeartbeatTimestamp = System.currentTimeMillis()
         smartHome.sessionIndex = event.sessionIndex.toString()
+        smartHome.status = SmartHomeStatus.Online
         smartHomeRepository.save(entity = smartHome, currentUser = currentUser)
     }
 }

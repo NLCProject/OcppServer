@@ -1,7 +1,5 @@
 package org.ocpp.server.controllers
 
-import org.isc.utils.enums.Feature
-import org.isc.utils.enums.Role
 import org.isc.utils.genericCrudl.controller.CrossOriginData
 import org.isc.utils.genericCrudl.controller.GenericController
 import org.isc.utils.genericCrudl.controller.Headers
@@ -48,13 +46,7 @@ class NotificationController @Autowired constructor(
         @RequestHeader(Headers.Authorization) token: String
     ): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
-            val currentUser = userAuthenticationService.isPermitted(
-                userId = userId,
-                token = token,
-                targetRoles = listOf(Role.General),
-                targetFeature = Feature.General
-            )
-
+            val currentUser = userAuthenticationService.isPermitted()
             entityService.changeViewStatus(
                 notificationId = notificationId,
                 viewStatus = viewStatus,

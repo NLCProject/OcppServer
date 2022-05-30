@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 @Service
 class AvailabilityService @Autowired constructor(
     private val smartHomeRepository: SmartHomeRepository
-): IAvailabilityService {
+) : IAvailabilityService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
     private val offsetStandby = 5_000

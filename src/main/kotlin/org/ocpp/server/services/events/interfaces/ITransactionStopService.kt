@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
  *
  */
 @Transactional
-interface IStopTransactionService {
+interface ITransactionStopService {
 
     /**
      *

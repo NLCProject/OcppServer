@@ -6,4 +6,4 @@ import org.ocpp.server.entities.notification.NotificationEntity
 /**
  *
  */
-interface NotificationRepository : ICrudlRepository<NotificationEntity>
+interface INotificationRepository : ICrudlRepository<NotificationEntity>

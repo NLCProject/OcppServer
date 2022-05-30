@@ -35,7 +35,6 @@ class SmartHomeRepository @Autowired constructor(
         status = status
     )
 
-
     /**
      *
      */
