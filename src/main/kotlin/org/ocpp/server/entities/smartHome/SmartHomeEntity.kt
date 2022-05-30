@@ -3,6 +3,7 @@ package org.ocpp.server.entities.smartHome
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity
+import org.ocpp.server.enums.SmartHomeStatus
 import javax.persistence.*
 
 /**
@@ -47,7 +48,7 @@ class SmartHomeEntity : IscEntity() {
      *
      */
     @Column
-    var lastHeartBeatTimestamp: Long = System.currentTimeMillis()
+    var lastHeartbeatTimestamp: Long = System.currentTimeMillis()
 
     /**
      *
@@ -72,6 +73,13 @@ class SmartHomeEntity : IscEntity() {
      */
     @Column
     var authorized: Boolean = false
+
+    /**
+     *
+     */
+    @Column
+    @Enumerated(value = EnumType.STRING)
+    var status: SmartHomeStatus = SmartHomeStatus.Online
 
     /**
      *

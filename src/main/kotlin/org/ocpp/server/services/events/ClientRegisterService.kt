@@ -50,7 +50,7 @@ class ClientRegisterService @Autowired constructor(
         currentUser: CurrentUser
     ) {
         logger.info("Updating existing client with identifier '${smartHome.identifier}'")
-        smartHome.lastHeartBeatTimestamp = System.currentTimeMillis()
+        smartHome.lastHeartbeatTimestamp = System.currentTimeMillis()
         smartHome.sessionIndex = event.sessionIndex.toString()
         smartHomeRepository.save(entity = smartHome, currentUser = currentUser)
     }

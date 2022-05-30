@@ -5,6 +5,7 @@ import org.ocpp.client.Organisation
 import org.ocpp.client.event.server.request.HeartbeatRequestEvent
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
+import org.ocpp.server.enums.SmartHomeStatus
 import org.ocpp.server.services.events.interfaces.IHeartbeatService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,7 +28,8 @@ class HeartbeatService @Autowired constructor(
     private fun updateHeartbeatTimestamp(smartHome: SmartHomeEntity) {
         logger.info("Updating heartbeat timestamp for smart home ID '${smartHome.id}'")
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
-        smartHome.lastHeartBeatTimestamp = System.currentTimeMillis()
+        smartHome.lastHeartbeatTimestamp = System.currentTimeMillis()
+        smartHome.status = SmartHomeStatus.Online
         smartHomeRepository.save(entity = smartHome, currentUser = currentUser)
     }
 }
