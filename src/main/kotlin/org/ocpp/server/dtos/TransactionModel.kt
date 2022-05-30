@@ -7,7 +7,6 @@ import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
 import org.ocpp.server.enums.TransactionStatus
 import org.ocpp.server.enums.TransactionType
-import javax.persistence.Column
 
 /**
  *

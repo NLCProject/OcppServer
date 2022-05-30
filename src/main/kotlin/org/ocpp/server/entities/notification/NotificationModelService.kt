@@ -5,7 +5,6 @@ import org.isc.utils.models.CurrentUser
 import org.isc.utils.models.NamedModel
 import org.isc.utils.models.filter.FilterParameters
 import org.ocpp.server.dtos.NotificationModel
-import org.ocpp.server.dtos.SmartHomeModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

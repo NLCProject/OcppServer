@@ -9,7 +9,7 @@ enum class Measurand(
      *
      */
     var unit: String
-){
+) {
 
     /**
      *

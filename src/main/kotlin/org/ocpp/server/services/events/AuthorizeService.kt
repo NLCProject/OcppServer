@@ -1,8 +1,8 @@
 package org.ocpp.server.services.events
 
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.event.server.request.AuthorizeRequestEvent
 import org.ocpp.client.Organisation
+import org.ocpp.client.event.server.request.AuthorizeRequestEvent
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
 import org.ocpp.server.services.authentication.IdTagAuthorizer
@@ -10,7 +10,6 @@ import org.ocpp.server.services.events.interfaces.IAuthorizeService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.lang.Exception
 
 @Service
 class AuthorizeService @Autowired constructor(

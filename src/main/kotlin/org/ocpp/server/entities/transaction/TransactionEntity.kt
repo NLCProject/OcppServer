@@ -1,8 +1,6 @@
 package org.ocpp.server.entities.transaction
 
 import eu.chargetime.ocpp.model.core.Reason
-import org.isc.utils.annotations.ValidateContent
-import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity

@@ -2,6 +2,7 @@ package org.ocpp.server.services.events
 
 import eu.chargetime.ocpp.model.core.ValueFormat
 import org.isc.utils.models.CurrentUser
+import org.isc.utils.services.dateTime.DateTimeUtil
 import org.isc.utils.services.dateTime.interfaces.IDateConversionService
 import org.isc.utils.tests.CurrentUserFactory
 import org.ocpp.client.Organisation
@@ -30,7 +31,7 @@ class StartTransactionService @Autowired constructor(
     private val meterValueService: MeterValueService,
     private val sampledValueService: SampledValueService,
     private val connectorService: ConnectorService
-): IStartTransactionService {
+) : IStartTransactionService {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
@@ -67,6 +68,7 @@ class StartTransactionService @Autowired constructor(
         logger.info("Saving meter value for new transaction")
         val meterValue = MeterValueModel()
         meterValue.transactionId = transaction.id
+        meterValue.dateTimeCreated = dateConversionService.buildDateTimeString(date = DateTimeUtil.dateNow())
         return meterValueService.saveEntity(model = meterValue, currentUser = currentUser)
     }
 
