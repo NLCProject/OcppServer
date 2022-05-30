@@ -39,9 +39,9 @@ class SampledValueModel : IscModel() {
     var phaseData: String = String()
 
     /**
-     *
+     * Should always be Cable by an house.
      */
-    var location: Location = Location.Body
+    var location: Location = Location.Cable
 
     /**
      *

@@ -5,6 +5,7 @@ import eu.chargetime.ocpp.model.core.ChargePointStatus
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity
+import org.ocpp.server.enums.NotificationViewStatus
 import javax.persistence.*
 
 /**
@@ -62,6 +63,12 @@ class NotificationEntity : IscEntity() {
      */
     @Column
     var vendorErrorCode: String = String()
+
+    /**
+     *
+     */
+    @Column
+    var viewStatus: NotificationViewStatus = NotificationViewStatus.New
 
     /**
      *

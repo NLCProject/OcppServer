@@ -4,6 +4,7 @@ import org.isc.utils.genericCrudl.services.ModelService
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.models.NamedModel
 import org.isc.utils.models.filter.FilterParameters
+import org.ocpp.server.dtos.NotificationModel
 import org.ocpp.server.dtos.SmartHomeModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -12,16 +13,16 @@ import org.springframework.stereotype.Service
 class NotificationModelService @Autowired constructor(
     filterService: NotificationFilterService,
     private val repositoryService: NotificationRepository
-) : ModelService<SmartHomeModel, NotificationEntity>(
+) : ModelService<NotificationModel, NotificationEntity>(
     repositoryService = repositoryService,
     filterService = filterService,
-    modelClass = SmartHomeModel::class.java,
+    modelClass = NotificationModel::class.java,
     abstractClass = NamedModel::class.java
 ) {
 
     override fun createModel(
         entity: NotificationEntity,
-        model: SmartHomeModel,
+        model: NotificationModel,
         currentUser: CurrentUser
     ) { }
 

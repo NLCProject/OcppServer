@@ -1,10 +1,14 @@
 package org.ocpp.server.entities.transaction
 
 import eu.chargetime.ocpp.model.core.Reason
+import org.isc.utils.annotations.ValidateContent
+import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity
 import org.ocpp.server.entities.meterValue.MeterValueEntity
+import org.ocpp.server.enums.TransactionStatus
+import org.ocpp.server.enums.TransactionType
 import javax.persistence.*
 
 /**
@@ -61,7 +65,26 @@ class TransactionEntity : IscEntity() {
      *
      */
     @Column
-    @Enumerated
+    var status: TransactionStatus = TransactionStatus.Ongoing
+
+    /**
+     *
+     */
+    @Column
+    var type: TransactionType = TransactionType.Outgoing
+    // TODO
+
+    /**
+     *
+     */
+    @Column
+    var reservationId: Int = 0
+
+    /**
+     *
+     */
+    @Column
+    @Enumerated(value = EnumType.STRING)
     var reasonToStop: Reason = Reason.Other
 
     /**

@@ -5,6 +5,8 @@ import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
+import org.ocpp.server.enums.TransactionStatus
+import org.ocpp.server.enums.TransactionType
 import javax.persistence.Column
 
 /**
@@ -32,8 +34,25 @@ class TransactionModel : IscModel() {
     /**
      *
      */
+    var status: TransactionStatus = TransactionStatus.Ongoing
+
+    /**
+     *
+     */
+    var type: TransactionType = TransactionType.Outgoing
+    // TODO
+
+    /**
+     *
+     */
     @ValidateContent(type = ValidationType.NotZeroOrLower, required = true)
     var externalId: Int = 0
+
+    /**
+     *
+     */
+    @ValidateContent(type = ValidationType.NotLowerZero, required = true)
+    var reservationId: Int = 0
 
     /**
      *
