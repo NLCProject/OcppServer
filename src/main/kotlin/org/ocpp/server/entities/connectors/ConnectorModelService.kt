@@ -26,7 +26,7 @@ class ConnectorModelService @Autowired constructor(
     ) { }
 
     override fun createAbstractModel(entity: ConnectorEntity, model: NamedModel, currentUser: CurrentUser) {
-        model.firstLine.text = entity.name
+        model.firstLine.text = entity.connectorName
     }
 
     override fun findAllPageable(filter: FilterParameters, page: Int, currentUser: CurrentUser): List<NamedModel> =

@@ -15,7 +15,7 @@ class ConnectorModel : IscModel() {
      *
      */
     @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
-    var name: String = String()
+    var connectorName: String = String()
 
     /**
      * Equal to ID tag.

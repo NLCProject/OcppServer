@@ -32,7 +32,7 @@ class SampledValueModelService @Autowired constructor(
             entity.valueData,
             entity.contextData,
             entity.meterValue.transaction.id,
-            entity.meterValue.transaction.connector.name
+            entity.meterValue.transaction.connector.connectorName
         )
     }
 

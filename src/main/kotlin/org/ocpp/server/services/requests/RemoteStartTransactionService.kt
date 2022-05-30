@@ -1,7 +1,7 @@
 package org.ocpp.server.services.requests
 
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
+import org.ocpp.client.application.Organisation
 import org.ocpp.client.server.interfaces.IServerRequestService
 import org.ocpp.server.entities.connectors.ConnectorRepository
 import org.ocpp.server.entities.transaction.TransactionService
@@ -24,7 +24,7 @@ class RemoteStartTransactionService @Autowired constructor(
     override fun start(connectorId: Int) {
         logger.info("Starting transaction ID '$connectorId' via remote")
         val optional = connectorRepository.findByExternalId(externalId = connectorId)
-        if (optional.isPresent)
+        if (!optional.isPresent)
             throw Exception("Connector with external ID '$connectorId' not found")
 
         val profile = chargingProfileDefaultFactory.build()
@@ -38,7 +38,7 @@ class RemoteStartTransactionService @Autowired constructor(
 
         serverRequestService.remoteStartTransaction(
             connectorId = connectorId,
-            idTag = Organisation.id,
+            idTag = Organisation.validationId,
             profile = profile
         )
     }

@@ -30,7 +30,7 @@ class NotificationModelService @Autowired constructor(
         model.firstLine.translate = true
         model.secondLine.text = entity.status.name
         model.secondLine.translate = true
-        model.thirdLine.text = entity.connector.name
+        model.thirdLine.text = entity.connector.connectorName
     }
 
     override fun findAllPageable(filter: FilterParameters, page: Int, currentUser: CurrentUser): List<NamedModel> =

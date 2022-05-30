@@ -2,7 +2,7 @@ package org.ocpp.server.services.events
 
 import org.isc.utils.services.dateTime.interfaces.IDateConversionService
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
+import org.ocpp.client.application.Organisation
 import org.ocpp.client.event.server.request.StatusNotificationRequestEvent
 import org.ocpp.server.dtos.NotificationModel
 import org.ocpp.server.entities.connectors.ConnectorService

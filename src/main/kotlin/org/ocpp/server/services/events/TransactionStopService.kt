@@ -2,7 +2,7 @@ package org.ocpp.server.services.events
 
 import org.isc.utils.services.dateTime.DateTimeUtil
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
+import org.ocpp.client.application.Organisation
 import org.ocpp.client.event.server.request.StopTransactionRequestEvent
 import org.ocpp.server.entities.meterValue.MeterValueService
 import org.ocpp.server.entities.sampledValue.SampledValueService

@@ -31,7 +31,7 @@ class ConnectorService @Autowired constructor(
 
         val connector = ConnectorModel()
         connector.externalId = externalId
-        connector.name = externalId.toString()
+        connector.connectorName = externalId.toString()
         connector.smartHomeId = smartHomeRepository.findBySessionIndex(sessionIndex = sessionIndex).get().id
         return saveEntity(model = connector, currentUser = currentUser)
     }

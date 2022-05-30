@@ -2,7 +2,7 @@ package org.ocpp.server.services.events
 
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
+import org.ocpp.client.application.Organisation
 import org.ocpp.client.event.server.ClientSessionLostEvent
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
@@ -23,8 +23,8 @@ class ClientUnregisterService @Autowired constructor(
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         val optional = smartHomeRepository.findBySessionIndex(sessionIndex = event.sessionIndex.toString())
 
-        if (!optional.isPresent)
-            return removeClient(smartHome = optional.get(), currentUser = currentUser)
+        if (optional.isPresent)
+            removeClient(smartHome = optional.get(), currentUser = currentUser)
     }
 
     private fun removeClient(smartHome: SmartHomeEntity, currentUser: CurrentUser) {

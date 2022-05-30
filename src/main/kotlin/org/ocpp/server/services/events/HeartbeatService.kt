@@ -1,7 +1,7 @@
 package org.ocpp.server.services.events
 
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
+import org.ocpp.client.application.Organisation
 import org.ocpp.client.event.server.request.HeartbeatRequestEvent
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository

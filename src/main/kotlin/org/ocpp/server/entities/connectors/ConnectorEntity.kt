@@ -43,7 +43,7 @@ class ConnectorEntity : IscEntity() {
      *
      */
     @Column
-    var name: String = String()
+    var connectorName: String = String()
 
     /**
      * Equal to ID tag.

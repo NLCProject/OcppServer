@@ -6,7 +6,7 @@ import org.isc.utils.genericCrudl.services.EntityService
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.services.dateTime.interfaces.IDateConversionService
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
+import org.ocpp.client.application.Organisation
 import org.ocpp.server.dtos.TransactionModel
 import org.ocpp.server.entities.connectors.ConnectorEntity
 import org.ocpp.server.entities.connectors.ConnectorRepository

@@ -3,7 +3,7 @@ package org.ocpp.server.services.requests
 import eu.chargetime.ocpp.model.core.Reason
 import org.isc.utils.services.dateTime.DateTimeUtil
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
+import org.ocpp.client.application.Organisation
 import org.ocpp.client.server.interfaces.IServerRequestService
 import org.ocpp.server.entities.transaction.TransactionService
 import org.ocpp.server.enums.TransactionStatus

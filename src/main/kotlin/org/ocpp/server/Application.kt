@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.ComponentScan
 
 @ComponentScan(basePackages = ["org.ocpp.server", "org.isc.utils", "org.ocpp.client"])
-@SpringBootApplication(scanBasePackages = ["org.ocpp.server", "org.isc.utils", "org.ocpp.client"])
+@SpringBootApplication(scanBasePackages = ["org.ocpp.server", "org.isc.utils"])
 class Application
 
 fun main(args: Array<String>) {

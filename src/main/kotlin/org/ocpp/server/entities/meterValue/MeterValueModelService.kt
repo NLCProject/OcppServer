@@ -31,7 +31,7 @@ class MeterValueModelService @Autowired constructor(
             separator = "|",
             entity.dateTimeCreated,
             entity.transaction.id,
-            entity.transaction.connector.name
+            entity.transaction.connector.connectorName
         )
     }
 

@@ -2,8 +2,8 @@ package org.ocpp.server.services.events
 
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.tests.CurrentUserFactory
-import org.ocpp.client.Organisation
-import org.ocpp.client.event.server.ClientConnectedEvent
+import org.ocpp.client.application.Organisation
+import org.ocpp.client.event.server.ClientConnectedOnServerEvent
 import org.ocpp.server.dtos.SmartHomeModel
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
@@ -22,7 +22,7 @@ class ClientRegisterService @Autowired constructor(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun onClientConnected(event: ClientConnectedEvent) {
+    override fun onClientConnected(event: ClientConnectedOnServerEvent) {
         logger.info("Handling client connected event")
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         val optional = smartHomeRepository.findBySessionIndexOrIdentifier(
@@ -36,7 +36,7 @@ class ClientRegisterService @Autowired constructor(
         registerNewClient(event = event, currentUser = currentUser)
     }
 
-    private fun registerNewClient(event: ClientConnectedEvent, currentUser: CurrentUser) {
+    private fun registerNewClient(event: ClientConnectedOnServerEvent, currentUser: CurrentUser) {
         logger.info("Registering new client with identifier '${event.information.identifier}'")
         val smartHome = SmartHomeModel()
         smartHome.name = event.information.identifier
@@ -48,7 +48,7 @@ class ClientRegisterService @Autowired constructor(
 
     private fun updateConnectedClient(
         smartHome: SmartHomeEntity,
-        event: ClientConnectedEvent,
+        event: ClientConnectedOnServerEvent,
         currentUser: CurrentUser
     ) {
         logger.info("Updating existing client with identifier '${smartHome.identifier}'")
