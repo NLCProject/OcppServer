@@ -35,6 +35,7 @@ class DataTransferRequestTest : ServerRequestTest() {
 
     @TestComponent
     class EventTestListener {
+
         @EventListener
         fun handle(event: ClientDataTransferRequestEvent) { }
     }

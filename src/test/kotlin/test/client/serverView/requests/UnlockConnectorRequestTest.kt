@@ -31,6 +31,7 @@ class UnlockConnectorRequestTest : ServerRequestTest() {
 
     @TestComponent
     class EventTestListener {
+
         @EventListener
         fun handle(event: UnlockConnectorRequestEvent) { }
     }

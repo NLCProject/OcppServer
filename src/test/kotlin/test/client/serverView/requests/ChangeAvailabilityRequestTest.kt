@@ -32,6 +32,7 @@ class ChangeAvailabilityRequestTest : ServerRequestTest() {
 
     @TestComponent
     class EventTestListener {
+
         @EventListener
         fun handle(event: ChangeAvailabilityRequestEvent) { }
     }

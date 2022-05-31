@@ -31,6 +31,7 @@ class RemoteStopTransactionRequestTest : ServerRequestTest() {
 
     @TestComponent
     class EventTestListener {
+
         @EventListener
         fun handle(event: RemoteStopTransactionRequestEvent) { }
     }

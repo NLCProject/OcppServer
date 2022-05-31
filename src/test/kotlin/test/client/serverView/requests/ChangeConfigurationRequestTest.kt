@@ -33,6 +33,7 @@ class ChangeConfigurationRequestTest : ServerRequestTest() {
 
     @TestComponent
     class EventTestListener {
+
         @EventListener
         fun handle(event: ChangeConfigurationRequestEvent) { }
     }
