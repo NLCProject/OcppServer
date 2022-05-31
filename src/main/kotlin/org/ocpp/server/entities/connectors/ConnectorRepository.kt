@@ -12,7 +12,10 @@ class ConnectorRepository @Autowired constructor(
 ) : RepositoryService<ConnectorEntity>(repository = repository) {
 
     /**
+     * Find a connector by its external ID.
      *
+     * @param externalId .
+     * @return Optional of entity.
      */
     fun findByExternalId(externalId: Int): Optional<ConnectorEntity> =
         repository.findByExternalId(externalId = externalId)

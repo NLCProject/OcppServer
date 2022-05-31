@@ -13,30 +13,31 @@ class SmartHomeRepository @Autowired constructor(
 ) : RepositoryService<SmartHomeEntity>(repository = repository) {
 
     /**
+     * Find smart home by its session index.
      *
+     * @param sessionIndex .
+     * @return Optional of entity.
      */
     fun findBySessionIndex(sessionIndex: String): Optional<SmartHomeEntity> =
         repository.findBySessionIndex(sessionIndex = sessionIndex)
 
     /**
+     * Find smart home by session index or identifier.
      *
+     * @param sessionIndex .
+     * @param identifier .
+     * @return Optional of entity.
      */
     fun findBySessionIndexOrIdentifier(sessionIndex: String, identifier: String): Optional<SmartHomeEntity> =
         repository.findBySessionIndexOrIdentifier(sessionIndex = sessionIndex, identifier = identifier)
 
     /**
+     * Find all smart homes where the last heartbeat timestamp is in between the given timestamps.
      *
-     */
-    fun findAllByLastHeartbeatTimestampLessThanAndStatusNot(
-        timestamp: Long,
-        status: SmartHomeStatus
-    ): List<SmartHomeEntity> = repository.findAllByLastHeartbeatTimestampLessThanAndStatusNot(
-        timestamp = timestamp,
-        status = status
-    )
-
-    /**
-     *
+     * @param timestampFrom Older timestamp.
+     * @param timestampTo Newer timestamp.
+     * @param status Excluded status to search for.
+     * @return List of entities.
      */
     fun findAllByLastHeartbeatTimestampBetweenAndStatusNot(
         timestampFrom: Long,
@@ -45,6 +46,21 @@ class SmartHomeRepository @Autowired constructor(
     ): List<SmartHomeEntity> = repository.findAllByLastHeartbeatTimestampBetweenAndStatusNot(
         timestampFrom = timestampFrom,
         timestampTo = timestampTo,
+        status = status
+    )
+
+    /**
+     * Find all smart homes where the last heartbeat timestamp is older than the given timestamp.
+     *
+     * @param timestamp .
+     * @param status Excluded status to search for.
+     * @return List of entities.
+     */
+    fun findAllByLastHeartbeatTimestampLessThanAndStatusNot(
+        timestamp: Long,
+        status: SmartHomeStatus
+    ): List<SmartHomeEntity> = repository.findAllByLastHeartbeatTimestampLessThanAndStatusNot(
+        timestamp = timestamp,
         status = status
     )
 }

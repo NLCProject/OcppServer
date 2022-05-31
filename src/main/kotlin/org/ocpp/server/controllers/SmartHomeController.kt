@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 /**
- *
+ * REST controller for smart homes.
  */
 @Controller
 @RequestMapping(path = ["smart-home"])
@@ -44,84 +44,71 @@ class SmartHomeController @Autowired constructor(
 ) {
 
     /**
+     * Unlock a connector.
      *
+     * @param connectorId .
      */
     @PostMapping(value = ["/unlockConnector"])
-    fun unlockConnector(
-        @RequestParam connectorId: Int,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun unlockConnector(@RequestParam connectorId: Int): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
             unlockConnectorService.unlockConnector(connectorId = connectorId)
         }
 
     /**
+     * Change the availability of a connector.
      *
+     * @param connectorId .
+     * @param type Type of availability.
      */
     @PostMapping(value = ["/changeAvailability"])
-    fun changeAvailability(
-        @RequestParam connectorId: Int,
-        @RequestParam type: AvailabilityType,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun changeAvailability(@RequestParam connectorId: Int, @RequestParam type: AvailabilityType): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
             changeAvailabilityService.changeAvailability(connectorId = connectorId, type = type)
         }
 
     /**
-     *
+     * Clear cache of the client.
      */
-    @PostMapping(value = ["/clearCacheService"])
-    fun clearCacheService(
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    @PostMapping(value = ["/clearCache"])
+    fun clearCache(): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
             clearCacheService.clearCache()
         }
 
     /**
+     * Reset client.
      *
+     * @param type Type of reset.
      */
     @PostMapping(value = ["/reset"])
-    fun reset(
-        @RequestParam type: ResetType,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun reset(@RequestParam type: ResetType): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
             resetService.reset(type = type)
         }
 
     /**
+     * Start transaction at the client remotely.
      *
+     * @param connectorId Connector for which the transaction shall be started.
      */
     @PostMapping(value = ["/remoteStartTransaction"])
-    fun remoteStartTransaction(
-        @RequestParam connectorId: Int,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun remoteStartTransaction(@RequestParam connectorId: Int): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
             remoteStartTransactionService.start(connectorId = connectorId)
         }
 
     /**
+     * Stop transaction at the client remotely.
      *
+     * @param transactionId Transaction to stop.
      */
     @PostMapping(value = ["/remoteStopTransaction"])
-    fun remoteStopTransaction(
-        @RequestParam transactionId: Int,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun remoteStopTransaction(@RequestParam transactionId: Int): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
             remoteStopTransactionService.stop(transactionId = transactionId)

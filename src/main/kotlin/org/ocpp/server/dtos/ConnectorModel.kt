@@ -1,31 +1,29 @@
 package org.ocpp.server.dtos
 
 import org.isc.utils.annotations.GenerateTsModel
+import org.isc.utils.annotations.RestrictModelToEntityConversion
 import org.isc.utils.annotations.ValidateContent
+import org.isc.utils.enums.ConversionRestriction
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
 
-/**
- *
- */
 @GenerateTsModel
 class ConnectorModel : IscModel() {
 
     /**
-     *
+     * Name of connector.
      */
     @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
     var connectorName: String = String()
 
     /**
-     * Equal to ID tag.
+     * External handled ID.
      */
-    @ValidateContent(type = ValidationType.NotZeroOrLower, required = true)
+    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var externalId: Int = 0
 
     /**
-     *
+     * Smart home parent ID.
      */
-    @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
     var smartHomeId: String = String()
 }

@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service
 @Service
 class TransactionStopService @Autowired constructor(
     private val meterValueService: MeterValueService,
-    private val meterValueHandlingService: IMeterValueHandlingService,
     private val sampledValueService: SampledValueService,
     private val transactionService: TransactionService
 ) : ITransactionStopService {
@@ -50,7 +49,7 @@ class TransactionStopService @Autowired constructor(
         )
 
         event.request.transactionData.forEach {
-            meterValueHandlingService.createMeterValue(
+            meterValueService.createMeterValue(
                 transaction = transaction,
                 meterValue = it,
                 currentUser = currentUser

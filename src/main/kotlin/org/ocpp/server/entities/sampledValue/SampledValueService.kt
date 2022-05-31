@@ -25,7 +25,13 @@ class SampledValueService @Autowired constructor(
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     /**
+     * Create sampled value entity.
      *
+     * @param meterValue Meter value to which this entity belongs.
+     * @param valueData .
+     * @param measurand .
+     * @param valueFormat .
+     * @param currentUser .
      */
     fun createSampledValue(
         meterValue: MeterValueEntity,
@@ -45,7 +51,11 @@ class SampledValueService @Autowired constructor(
     }
 
     /**
+     * Create sampled value entity.
      *
+     * @param meterValue Meter value to which this entity belongs.
+     * @param sampledValue .
+     * @param currentUser .
      */
     fun createSampledValue(
         meterValue: MeterValueEntity,

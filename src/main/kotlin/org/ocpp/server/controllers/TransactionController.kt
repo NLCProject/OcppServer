@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 /**
- *
+ * REST controller for images.
  */
 @Controller
 @RequestMapping(path = ["transaction"])

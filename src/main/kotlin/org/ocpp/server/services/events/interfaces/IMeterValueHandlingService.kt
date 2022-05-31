@@ -8,19 +8,16 @@ import org.springframework.context.event.EventListener
 import org.springframework.transaction.annotation.Transactional
 
 /**
- *
+ * Server event.
  */
+@Transactional
 interface IMeterValueHandlingService {
 
     /**
+     * Incoming meter value for a transaction.
      *
+     * @param event .
      */
-    @Transactional
     @EventListener(MeterValuesRequestEvent::class)
     fun saveMeterValue(event: MeterValuesRequestEvent)
-
-    /**
-     *
-     */
-    fun createMeterValue(transaction: TransactionEntity, meterValue: MeterValue, currentUser: CurrentUser)
 }

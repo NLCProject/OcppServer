@@ -22,7 +22,12 @@ class ConnectorService @Autowired constructor(
 ) {
 
     /**
+     * Find a connector by external ID. If it is not existing, a new entity is created,
      *
+     * @param externalId .
+     * @param sessionIndex .
+     * @param currentUser
+     * @return Found or created entity.
      */
     fun findOrCreateConnector(externalId: Int, sessionIndex: String, currentUser: CurrentUser): ConnectorEntity {
         val optional = repositoryService.findByExternalId(externalId = externalId)

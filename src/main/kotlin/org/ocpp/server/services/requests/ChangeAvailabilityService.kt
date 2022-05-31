@@ -18,7 +18,7 @@ class ChangeAvailabilityService @Autowired constructor(
 
     override fun changeAvailability(connectorId: Int, type: AvailabilityType) {
         logger.info("Changing availability of connector ID '$connectorId' to type '$type'")
-        transactionService.closeAllOngoingTransactions()
+        transactionService.closeAllOngoingTransactions(connectorId = connectorId)
         serverRequestService.changeAvailability(connectorId = connectorId, type = type)
     }
 }

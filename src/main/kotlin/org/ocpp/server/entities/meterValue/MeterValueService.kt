@@ -1,5 +1,6 @@
 package org.ocpp.server.entities.meterValue
 
+import eu.chargetime.ocpp.model.core.MeterValue
 import org.isc.utils.genericCrudl.models.Aspects
 import org.isc.utils.genericCrudl.services.EntityService
 import org.isc.utils.models.CurrentUser
@@ -27,7 +28,11 @@ class MeterValueService @Autowired constructor(
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     /**
+     * Create meter value entity.
      *
+     * @param transaction Transaction to which this entity belongs.
+     * @param timestamp .
+     * @param currentUser .
      */
     fun createMeterValue(
         transaction: TransactionEntity,
@@ -39,6 +44,30 @@ class MeterValueService @Autowired constructor(
         meterValue.transactionId = transaction.id
         meterValue.dateTimeCreated = dateConversionService.buildDateTimeString(date = timestamp)
         return saveEntity(model = meterValue, currentUser = currentUser)
+    }
+
+    /**
+     * Create meter value entity.
+     *
+     * @param transaction Transaction to which this entity belongs.
+     * @param meterValue .
+     * @param currentUser .
+     */
+    fun createMeterValue(
+        transaction: TransactionEntity,
+        meterValue: MeterValue,
+        currentUser: CurrentUser
+    ) {
+        logger.info("Saving meter value for new transaction")
+        val entity = createMeterValue(
+            transaction = transaction,
+            timestamp = meterValue.timestamp,
+            currentUser = currentUser
+        )
+
+        meterValue.sampledValue.forEach {
+            sampledValueService.createSampledValue(meterValue = entity, sampledValue = it, currentUser = currentUser)
+        }
     }
 
     override fun preSave(

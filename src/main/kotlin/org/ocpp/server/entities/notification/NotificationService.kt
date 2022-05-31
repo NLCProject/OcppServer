@@ -22,7 +22,11 @@ class NotificationService @Autowired constructor(
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     /**
+     * Change view status of an entity.
      *
+     * @param notificationId .
+     * @param viewStatus .
+     * @param currentUser .
      */
     fun changeViewStatus(notificationId: String, viewStatus: NotificationViewStatus, currentUser: CurrentUser) {
         logger.info("Changing view status to '${viewStatus.name}' for notification ID '$notificationId'")

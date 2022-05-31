@@ -12,23 +12,16 @@ class ImageRepository @Autowired constructor(
 ) : RepositoryService<ImageEntity>(repository = repository) {
 
     /**
+     * Find thumbnail by its ID.
      *
+     * @param id .
+     * @return Byte array of thumbnail. May be null.
      */
     fun findThumbnail(id: String, currentUser: CurrentUser): String? {
-        val imageOptional = if (currentUser.hasSuperRole()) {
-            repository.findThumbnailById(id = id)
-        } else {
-            repository.findThumbnailByIdAndOrganisationId(id = id, organisationId = currentUser.organisationId)
-        }
-
-        if (imageOptional.isPresent)
-            return String(imageOptional.get())
+        val optional = repository.findThumbnailById(id = id)
+        if (optional.isPresent)
+            return String(optional.get())
 
         return null
     }
-
-    /**
-     *
-     */
-    fun findAllWhereThumbnailIsNull(): List<ImageEntity> = repository.findByThumbnailIsNull()
 }

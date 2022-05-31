@@ -5,13 +5,15 @@ import org.springframework.context.event.EventListener
 import org.springframework.transaction.annotation.Transactional
 
 /**
- *
+ * Server event.
  */
 @Transactional
 interface ITransactionStopService {
 
     /**
+     * Stop transaction.
      *
+     * @param event .
      */
     @EventListener(StopTransactionRequestEvent::class)
     fun stopTransaction(event: StopTransactionRequestEvent)

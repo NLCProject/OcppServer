@@ -1,9 +1,6 @@
 package org.ocpp.server.controllers
 
-import org.isc.utils.enums.Feature
-import org.isc.utils.enums.Role
 import org.isc.utils.genericCrudl.controller.CrossOriginData
-import org.isc.utils.genericCrudl.controller.Headers
 import org.isc.utils.genericCrudl.services.exceptionHandler.interfaces.IExceptionHandler
 import org.ocpp.server.dtos.ImageModel
 import org.ocpp.server.entities.image.ImageModelService
@@ -15,7 +12,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 /**
- *
+ * REST controller for images.
  */
 @Controller
 @RequestMapping(path = ["image"])
@@ -28,50 +25,39 @@ class ImageController @Autowired constructor(
 ) {
 
     /**
+     * Upload an image model and update the base 64 strings in the database.
      *
+     * @param model .
      */
     @PostMapping(value = ["/upload"])
-    fun upload(
-        @RequestBody model: ImageModel,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun upload(@RequestBody model: ImageModel): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
-            val currentUser = userAuthenticationService.isPermitted(
-                userId = userId,
-                token = token,
-                targetRoles = listOf(Role.General),
-                targetFeature = Feature.General
-            )
-
+            val currentUser = userAuthenticationService.isPermitted()
             entityService.saveEntity(model = model, currentUser = currentUser)
         }
 
     /**
+     * Delete an image by ID.
      *
+     * @param id .
      */
     @PostMapping(value = ["/delete"])
-    fun delete(
-        @RequestParam id: String,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun delete(@RequestParam id: String): ResponseEntity<*> =
         exceptionHandler.executeAnyOperation {
             val currentUser = userAuthenticationService.isPermitted()
             entityService.deleteEntity(id = id, currentUser = currentUser)
         }
 
     /**
+     * Returns an image model by the given ID.
      *
+     * @param id .
+     * @return Image model.
      */
     @GetMapping(value = ["/findById"])
-    fun findById(
-        @RequestParam imageId: String,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
-    ): ResponseEntity<*> =
+    fun findById(@RequestParam id: String): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             val currentUser = userAuthenticationService.isPermitted()
-            modelService.findById(id = imageId, currentUser = currentUser)
+            modelService.findById(id = id, currentUser = currentUser)
         }
 }

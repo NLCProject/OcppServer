@@ -51,7 +51,7 @@ class ClientRegisterService @Autowired constructor(
         event: ClientConnectedOnServerEvent,
         currentUser: CurrentUser
     ) {
-        logger.info("Updating existing client with identifier '${smartHome.identifier}'")
+        logger.info("Updating existing client with ID '${smartHome.identifier}'")
         smartHome.lastHeartbeatTimestamp = System.currentTimeMillis()
         smartHome.sessionIndex = event.sessionIndex.toString()
         smartHome.status = SmartHomeStatus.Online

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 /**
- *
+ * REST controller for sampled values.
  */
 @Controller
 @RequestMapping(path = ["sampled-value"])

@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service
 @Service
 class MeterValueHandlingService @Autowired constructor(
     private val meterValueService: MeterValueService,
-    private val sampledValueService: SampledValueService,
     private val transactionRepository: TransactionRepository
 ) : IMeterValueHandlingService {
 
@@ -31,24 +30,7 @@ class MeterValueHandlingService @Autowired constructor(
 
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         event.request.meterValue.forEach {
-            createMeterValue(transaction = optional.get(), meterValue = it, currentUser = currentUser)
-        }
-    }
-
-    override fun createMeterValue(
-        transaction: TransactionEntity,
-        meterValue: MeterValue,
-        currentUser: CurrentUser
-    ) {
-        logger.info("Saving meter value for new transaction")
-        val entity = meterValueService.createMeterValue(
-            transaction = transaction,
-            timestamp = meterValue.timestamp,
-            currentUser = currentUser
-        )
-
-        meterValue.sampledValue.forEach {
-            sampledValueService.createSampledValue(meterValue = entity, sampledValue = it, currentUser = currentUser)
+            meterValueService.createMeterValue(transaction = optional.get(), meterValue = it, currentUser = currentUser)
         }
     }
 }

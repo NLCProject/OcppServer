@@ -32,7 +32,14 @@ class TransactionService @Autowired constructor(
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     /**
+     * Creates transaction entity.
      *
+     * @param connector Connector to which this entity belongs.
+     * @param transactionId .
+     * @param reservationId .
+     * @param timestamp .
+     * @param currentUser .
+     * @return Created entity.
      */
     fun createTransaction(
         connector: ConnectorEntity,
@@ -51,7 +58,14 @@ class TransactionService @Autowired constructor(
     }
 
     /**
+     * Update transaction entity.
      *
+     * @param transactionId .
+     * @param timestamp .
+     * @param reason .
+     * @param status .
+     * @param currentUser .
+     * @return Updated entity.
      */
     fun updateTransaction(
         transactionId: Int,
@@ -73,13 +87,18 @@ class TransactionService @Autowired constructor(
     }
 
     /**
+     * Close all ongoing transactions. Optional a single connector can be defined for which the transactions shall be
+     * closed.
      *
+     * @param connectorId If null, all ongoing transactions are closed. If not, only ongoing transactions of the given
+     * connector are closed.
      */
-    fun closeAllOngoingTransactions() {
+    fun closeAllOngoingTransactions(connectorId: Int? = null) {
         logger.info("Closing all ongoing transaction")
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         repositoryService
             .findByStatus(status = TransactionStatus.Ongoing)
+            .filter { if (connectorId == null) true else it.connector.externalId == connectorId }
             .toList()
             .forEach {
                 logger.info("Setting status of transaction ID '${it.id}' to '${TransactionStatus.Finished}'")

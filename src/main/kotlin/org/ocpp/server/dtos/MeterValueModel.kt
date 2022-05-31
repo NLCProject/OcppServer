@@ -1,24 +1,23 @@
 package org.ocpp.server.dtos
 
 import org.isc.utils.annotations.GenerateTsModel
+import org.isc.utils.annotations.RestrictModelToEntityConversion
 import org.isc.utils.annotations.ValidateContent
+import org.isc.utils.enums.ConversionRestriction
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
 
-/**
- *
- */
 @GenerateTsModel
 class MeterValueModel : IscModel() {
 
     /**
-     *
+     * Date when the measure has been taken.
      */
+    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var dateTimeCreated: String = String()
 
     /**
-     *
+     * Transaction parent ID.
      */
-    @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
     var transactionId: String = String()
 }

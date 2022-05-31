@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 /**
- *
+ * REST controller for notifications.
  */
 @Controller
 @RequestMapping(path = ["notification"])
@@ -36,14 +36,15 @@ class NotificationController @Autowired constructor(
 ) {
 
     /**
+     * Change view status of a notification.
      *
+     * @param notificationId .
+     * @param viewStatus .
      */
     @PostMapping(value = ["/changeViewStatus"])
     fun changeViewStatus(
         @RequestParam notificationId: String,
-        @RequestParam viewStatus: NotificationViewStatus,
-        @RequestHeader(Headers.ID) userId: String,
-        @RequestHeader(Headers.Authorization) token: String
+        @RequestParam viewStatus: NotificationViewStatus
     ): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             val currentUser = userAuthenticationService.isPermitted()

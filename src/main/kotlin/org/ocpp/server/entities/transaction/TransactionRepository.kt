@@ -13,13 +13,19 @@ class TransactionRepository @Autowired constructor(
 ) : RepositoryService<TransactionEntity>(repository = repository) {
 
     /**
+     * Find transaction by its external ID.
      *
+     * @param externalId .
+     * @return Optional of entity.
      */
     fun findByExternalId(externalId: Int): Optional<TransactionEntity> =
         repository.findByExternalId(externalId = externalId)
 
     /**
+     * Find all transactions by given status.
      *
+     * @param status .
+     * @return List of entities
      */
     fun findByStatus(status: TransactionStatus): List<TransactionEntity> = repository.findByStatus(status = status)
 }
