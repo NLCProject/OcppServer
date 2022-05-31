@@ -9,7 +9,6 @@ import org.ocpp.server.entities.sampledValue.SampledValueService
 import org.ocpp.server.entities.transaction.TransactionService
 import org.ocpp.server.enums.TransactionStatus
 import org.ocpp.server.services.authentication.IdTagAuthorizer
-import org.ocpp.server.services.events.interfaces.IMeterValueHandlingService
 import org.ocpp.server.services.events.interfaces.ITransactionStopService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired

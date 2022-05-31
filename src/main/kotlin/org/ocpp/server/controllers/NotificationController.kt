@@ -2,7 +2,6 @@ package org.ocpp.server.controllers
 
 import org.isc.utils.genericCrudl.controller.CrossOriginData
 import org.isc.utils.genericCrudl.controller.GenericController
-import org.isc.utils.genericCrudl.controller.Headers
 import org.ocpp.server.dtos.NotificationModel
 import org.ocpp.server.entities.notification.NotificationEntity
 import org.ocpp.server.entities.notification.NotificationFilterService

@@ -55,7 +55,7 @@ class TransactionEntity : IscEntity() {
      */
     @Column
     var type: TransactionType = TransactionType.Outgoing
-    // TODO
+    // TODO Set type by the incoming data from the client.
 
     /**
      * Optional reservation ID. If 0, it is not reserved by a connector.

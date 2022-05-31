@@ -4,7 +4,6 @@ import eu.chargetime.ocpp.model.core.AvailabilityType
 import eu.chargetime.ocpp.model.core.ResetType
 import org.isc.utils.genericCrudl.controller.CrossOriginData
 import org.isc.utils.genericCrudl.controller.GenericController
-import org.isc.utils.genericCrudl.controller.Headers
 import org.ocpp.server.dtos.SmartHomeModel
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeFilterService
