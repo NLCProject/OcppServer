@@ -3,8 +3,8 @@ package test.client.serverView
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.ocpp.server.Application
 import org.ocpp.client.server.interfaces.IServerInitService
+import org.ocpp.server.Application
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension

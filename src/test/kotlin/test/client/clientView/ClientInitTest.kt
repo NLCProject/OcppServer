@@ -8,14 +8,14 @@ import org.ocpp.client.client.interfaces.IClientInitService
 import org.ocpp.client.event.client.ClientConnectedEvent
 import org.ocpp.client.event.client.ClientConnectionLostEvent
 import org.ocpp.client.server.interfaces.IServerInitService
+import org.ocpp.server.Application
+import org.ocpp.server.services.events.interfaces.IClientRegisterService
+import org.ocpp.server.services.events.interfaces.IClientUnregisterService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.TestComponent
 import org.springframework.boot.test.mock.mockito.SpyBean
 import org.springframework.context.event.EventListener
-import org.ocpp.server.Application
-import org.ocpp.server.services.events.interfaces.IClientRegisterService
-import org.ocpp.server.services.events.interfaces.IClientUnregisterService
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.transaction.annotation.Transactional
 
@@ -51,6 +51,8 @@ class ClientInitTest {
     fun init() {
         serverInitService.init(ipAddress = ipAddress)
         clientInitService.init(ipAddress = ipAddress)
+        Thread.sleep(1_000)
+
         verify(eventListener, times(1)).handleClientConnect(anyOrNull())
         verify(clientRegisterService, times(1)).onClientConnected(anyOrNull())
         verify(eventListener, never()).handleClose(anyOrNull())
@@ -61,12 +63,16 @@ class ClientInitTest {
     fun init_thenDisconnect() {
         serverInitService.init(ipAddress = ipAddress)
         clientInitService.init(ipAddress = ipAddress)
+        Thread.sleep(1_000)
+
         verify(eventListener, times(1)).handleClientConnect(anyOrNull())
         verify(clientRegisterService, times(1)).onClientConnected(anyOrNull())
         verify(eventListener, never()).handleClose(anyOrNull())
         verify(clientUnregisterService, never()).onClientDisconnected(anyOrNull())
 
         clientInitService.disconnect()
+        Thread.sleep(1_000)
+
         verify(eventListener, times(1)).handleClose(anyOrNull())
         verify(clientUnregisterService, times(1)).onClientDisconnected(anyOrNull())
     }
@@ -75,12 +81,16 @@ class ClientInitTest {
     fun init_thenServerCloses() {
         serverInitService.init(ipAddress = ipAddress)
         clientInitService.init(ipAddress = ipAddress)
+        Thread.sleep(1_000)
+
         verify(eventListener, times(1)).handleClientConnect(anyOrNull())
         verify(clientRegisterService, times(1)).onClientConnected(anyOrNull())
         verify(eventListener, never()).handleClose(anyOrNull())
         verify(clientUnregisterService, never()).onClientDisconnected(anyOrNull())
 
         serverInitService.close()
+        Thread.sleep(1_000)
+
         verify(eventListener, times(1)).handleClose(anyOrNull())
         verify(clientUnregisterService, times(1)).onClientDisconnected(anyOrNull())
     }
@@ -88,6 +98,8 @@ class ClientInitTest {
     @Test
     fun init_serverNotStarted() {
         clientInitService.init(ipAddress = ipAddress)
+        Thread.sleep(1_000)
+
         verify(eventListener, never()).handleClientConnect(anyOrNull())
         verify(eventListener, times(1)).handleClose(anyOrNull())
     }

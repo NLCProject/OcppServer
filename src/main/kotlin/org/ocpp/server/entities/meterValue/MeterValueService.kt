@@ -3,7 +3,6 @@ package org.ocpp.server.entities.meterValue
 import org.isc.utils.genericCrudl.models.Aspects
 import org.isc.utils.genericCrudl.services.EntityService
 import org.isc.utils.models.CurrentUser
-import org.isc.utils.services.dateTime.DateTimeUtil
 import org.isc.utils.services.dateTime.interfaces.IDateConversionService
 import org.ocpp.server.dtos.MeterValueModel
 import org.ocpp.server.entities.sampledValue.SampledValueService

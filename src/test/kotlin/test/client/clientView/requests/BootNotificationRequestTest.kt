@@ -2,22 +2,17 @@ package test.client.clientView.requests
 
 import eu.chargetime.ocpp.model.core.RegistrationStatus
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.kotlin.argumentCaptor
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
-import org.ocpp.server.Application
 import org.ocpp.client.event.server.request.BootNotificationRequestEvent
 import org.ocpp.client.utils.Heartbeat
 import org.ocpp.client.utils.Ids
 import org.ocpp.server.services.events.interfaces.IBootNotificationService
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.context.TestComponent
 import org.springframework.boot.test.mock.mockito.SpyBean
-import org.springframework.context.event.EventListener
-import org.springframework.test.context.junit.jupiter.SpringExtension
-import org.springframework.transaction.annotation.Transactional
+import test.client.clientView.requests.helper.ClientRequestTest
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
 class BootNotificationRequestTest : ClientRequestTest() {
 
@@ -35,6 +30,7 @@ class BootNotificationRequestTest : ClientRequestTest() {
 
         assertEquals(RegistrationStatus.Accepted, confirmation.status)
         assertEquals(Heartbeat.heartbeatInterval, confirmation.interval)
+        assertNotNull(confirmation.currentTime)
 
         val argumentCaptor = argumentCaptor<BootNotificationRequestEvent>()
         verify(bootNotificationService, times(1)).handleNotification(argumentCaptor.capture())
