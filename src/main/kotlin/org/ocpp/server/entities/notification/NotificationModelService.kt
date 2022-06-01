@@ -25,13 +25,7 @@ class NotificationModelService @Autowired constructor(
         currentUser: CurrentUser
     ) { }
 
-    override fun createAbstractModel(entity: NotificationEntity, model: NamedModel, currentUser: CurrentUser) {
-        model.firstLine.text = entity.errorCode.name
-        model.firstLine.translate = true
-        model.secondLine.text = entity.status.name
-        model.secondLine.translate = true
-        model.thirdLine.text = entity.connector.connectorName
-    }
+    override fun createAbstractModel(entity: NotificationEntity, model: NamedModel, currentUser: CurrentUser) { }
 
     override fun findAllPageable(filter: FilterParameters, page: Int, currentUser: CurrentUser): List<NamedModel> =
         repositoryService

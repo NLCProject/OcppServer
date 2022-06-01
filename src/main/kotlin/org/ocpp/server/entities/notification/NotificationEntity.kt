@@ -72,7 +72,7 @@ class NotificationEntity : IscEntity() {
     /**
      * Connector parent.
      */
-    @ManyToOne(cascade = [CascadeType.MERGE])
     @JoinColumn(name = "connector_id")
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     lateinit var connector: ConnectorEntity
 }

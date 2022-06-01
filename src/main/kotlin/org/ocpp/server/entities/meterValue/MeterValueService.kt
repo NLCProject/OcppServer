@@ -87,11 +87,11 @@ class MeterValueService @Autowired constructor(
         wasPresent: Boolean,
         aspects: Aspects,
         currentUser: CurrentUser
-    ) {
+    ) { }
+
+    override fun preDelete(entity: MeterValueEntity, currentUser: CurrentUser) {
         entity.sampledValues.forEach { sampledValueService.deleteEntity(id = it.id, currentUser = currentUser) }
     }
-
-    override fun preDelete(entity: MeterValueEntity, currentUser: CurrentUser) { }
 
     override fun afterDelete(entity: MeterValueEntity, currentUser: CurrentUser) { }
 

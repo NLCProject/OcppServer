@@ -1,8 +1,11 @@
 package org.ocpp.server.enums
 
+import org.isc.utils.annotations.GenerateTsModel
+
 /**
  * Defines the measurand and unit.
  */
+@GenerateTsModel
 enum class Measurand(
 
     /**

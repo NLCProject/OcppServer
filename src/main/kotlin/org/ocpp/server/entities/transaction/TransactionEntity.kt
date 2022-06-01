@@ -1,6 +1,8 @@
 package org.ocpp.server.entities.transaction
 
 import eu.chargetime.ocpp.model.core.Reason
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity
@@ -73,13 +75,14 @@ class TransactionEntity : IscEntity() {
     /**
      * Connector parent.
      */
-    @ManyToOne(cascade = [CascadeType.MERGE])
     @JoinColumn(name = "connector_id")
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     lateinit var connector: ConnectorEntity
 
     /**
      * Meter values of this transaction.
      */
+    @LazyCollection(value = LazyCollectionOption.FALSE)
     @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "transaction")
     var meterValues: List<MeterValueEntity> = emptyList()
 }

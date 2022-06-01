@@ -1,8 +1,11 @@
 package org.ocpp.server.enums
 
+import org.isc.utils.annotations.GenerateTsModel
+
 /**
  * Transaction type.
  */
+@GenerateTsModel
 enum class TransactionType {
 
     /**

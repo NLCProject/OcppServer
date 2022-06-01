@@ -32,7 +32,6 @@ class SmartHomeModelService @Autowired constructor(
     }
 
     override fun createAbstractModel(entity: SmartHomeEntity, model: NamedModel, currentUser: CurrentUser) {
-        model.firstLine.text = entity.name
         model.thumbnail = imageRepoService.findThumbnail(id = entity.imageId, currentUser = currentUser)
     }
 

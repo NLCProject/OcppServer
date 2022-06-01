@@ -1,5 +1,7 @@
 package org.ocpp.server.entities.meterValue
 
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.sampledValue.SampledValueEntity
@@ -32,13 +34,14 @@ class MeterValueEntity : IscEntity() {
     /**
      * Transaction parent.
      */
-    @ManyToOne(cascade = [CascadeType.MERGE])
     @JoinColumn(name = "transaction_id")
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     lateinit var transaction: TransactionEntity
 
     /**
      * Sampled values of this meter value.
      */
+    @LazyCollection(value = LazyCollectionOption.FALSE)
     @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "meterValue")
     var sampledValues: List<SampledValueEntity> = emptyList()
 }

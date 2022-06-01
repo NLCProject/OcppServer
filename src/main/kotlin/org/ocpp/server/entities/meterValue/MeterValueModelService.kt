@@ -26,14 +26,7 @@ class MeterValueModelService @Autowired constructor(
         currentUser: CurrentUser
     ) { }
 
-    override fun createAbstractModel(entity: MeterValueEntity, model: NamedModel, currentUser: CurrentUser) {
-        model.firstLine.text = StringUtil.joinWithSeparatorWithSpace(
-            separator = "|",
-            entity.dateTimeCreated,
-            entity.transaction.id,
-            entity.transaction.connector.connectorName
-        )
-    }
+    override fun createAbstractModel(entity: MeterValueEntity, model: NamedModel, currentUser: CurrentUser) { }
 
     override fun findAllPageable(filter: FilterParameters, page: Int, currentUser: CurrentUser): List<NamedModel> =
         repositoryService

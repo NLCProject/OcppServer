@@ -1,5 +1,7 @@
 package org.ocpp.server.entities.smartHome
 
+import org.hibernate.annotations.LazyCollection
+import org.hibernate.annotations.LazyCollectionOption
 import org.isc.utils.genericCrudl.models.IscEntity
 import org.isc.utils.utils.Ids
 import org.ocpp.server.entities.connectors.ConnectorEntity
@@ -69,6 +71,7 @@ class SmartHomeEntity : IscEntity() {
     /**
      * Connectors of this smart home.
      */
+    @LazyCollection(value = LazyCollectionOption.FALSE)
     @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "smartHome")
     var connectors: List<ConnectorEntity> = emptyList()
 }

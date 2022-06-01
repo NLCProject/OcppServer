@@ -71,7 +71,7 @@ class SampledValueEntity : IscEntity() {
     /**
      * Meter value parent.
      */
-    @ManyToOne(cascade = [CascadeType.MERGE])
     @JoinColumn(name = "meterValue_id")
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     lateinit var meterValue: MeterValueEntity
 }

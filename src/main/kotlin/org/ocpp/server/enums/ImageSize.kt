@@ -1,8 +1,11 @@
 package org.ocpp.server.enums
 
+import org.isc.utils.annotations.GenerateTsModel
+
 /**
  * Defines the image length.
  */
+@GenerateTsModel
 enum class ImageSize(
 
     /**

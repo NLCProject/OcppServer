@@ -25,9 +25,7 @@ class TransactionModelService @Autowired constructor(
         currentUser: CurrentUser
     ) { }
 
-    override fun createAbstractModel(entity: TransactionEntity, model: NamedModel, currentUser: CurrentUser) {
-        model.firstLine.text = entity.dateTimeStarted
-    }
+    override fun createAbstractModel(entity: TransactionEntity, model: NamedModel, currentUser: CurrentUser) { }
 
     override fun findAllPageable(filter: FilterParameters, page: Int, currentUser: CurrentUser): List<NamedModel> =
         repositoryService

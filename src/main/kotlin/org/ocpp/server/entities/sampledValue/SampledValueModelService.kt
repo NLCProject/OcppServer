@@ -26,15 +26,7 @@ class SampledValueModelService @Autowired constructor(
         currentUser: CurrentUser
     ) { }
 
-    override fun createAbstractModel(entity: SampledValueEntity, model: NamedModel, currentUser: CurrentUser) {
-        model.firstLine.text = StringUtil.joinWithSeparatorWithSpace(
-            separator = "|",
-            entity.valueData,
-            entity.contextData,
-            entity.meterValue.transaction.id,
-            entity.meterValue.transaction.connector.connectorName
-        )
-    }
+    override fun createAbstractModel(entity: SampledValueEntity, model: NamedModel, currentUser: CurrentUser) { }
 
     override fun findAllPageable(filter: FilterParameters, page: Int, currentUser: CurrentUser): List<NamedModel> =
         repositoryService

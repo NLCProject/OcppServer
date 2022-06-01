@@ -50,6 +50,7 @@ class TestHelperService @Autowired constructor(
         smartHome.name = Ids.getRandomId()
         smartHome.sessionIndex = Ids.getRandomId()
         smartHome.status = SmartHomeStatus.values().random()
+        smartHome.imageId = createImage(currentUser = currentUser).id
         smartHome.organisationId = currentUser.organisationId
         return smartHomeRepository.save(entity = smartHome, currentUser = currentUser)
     }

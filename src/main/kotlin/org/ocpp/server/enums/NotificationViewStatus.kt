@@ -1,8 +1,11 @@
 package org.ocpp.server.enums
 
+import org.isc.utils.annotations.GenerateTsModel
+
 /**
  * Notification view status.
  */
+@GenerateTsModel
 enum class NotificationViewStatus {
 
     /**
