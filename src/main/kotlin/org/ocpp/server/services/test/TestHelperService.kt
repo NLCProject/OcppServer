@@ -78,7 +78,11 @@ class TestHelperService @Autowired constructor(
         return notificationRepository.save(entity = notification, currentUser = currentUser)
     }
 
-    fun createTransaction(connector: ConnectorEntity? = null, currentUser: CurrentUser): TransactionEntity {
+    fun createTransaction(
+        connector: ConnectorEntity? = null,
+        status: TransactionStatus = TransactionStatus.values().random(),
+        currentUser: CurrentUser
+    ): TransactionEntity {
         val transaction = TransactionEntity()
         transaction.connector = connector ?: createConnector(currentUser = currentUser)
         transaction.dateTimeStarted = dateConversionService.buildDateTimeString(date = DateTimeUtil.dateNow())
@@ -86,7 +90,7 @@ class TestHelperService @Autowired constructor(
         transaction.organisationId = currentUser.organisationId
         transaction.externalId = Ids.getRandomIdentifier()
         transaction.reservationId = Ids.getRandomIdentifier()
-        transaction.status = TransactionStatus.values().random()
+        transaction.status = status
         transaction.type = TransactionType.values().random()
         transaction.reasonToStop = Reason.values().random()
         return transactionRepository.save(entity = transaction, currentUser = currentUser)
