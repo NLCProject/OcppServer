@@ -19,7 +19,6 @@ class ConnectorModel : IscModel() {
     /**
      * External handled ID.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var externalId: Int = 0
 
     /**

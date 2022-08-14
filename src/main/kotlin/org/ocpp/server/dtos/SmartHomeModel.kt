@@ -32,7 +32,6 @@ class SmartHomeModel : IscModel() {
     /**
      * Boolean if smart home has been authorized.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var authorized: Boolean = false
 
     /**

@@ -11,7 +11,6 @@ class MeterValueModel : IscModel() {
     /**
      * Date when the measure has been taken.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var dateTimeCreated: String = String()
 
     /**

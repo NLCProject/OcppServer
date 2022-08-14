@@ -11,12 +11,10 @@ class ImageModel : IscModel() {
     /**
      * Base 64 string of original image.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var base64String: String? = null
 
     /**
      * Base 64 string of thumbnail.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var thumbnail: String? = null
 }

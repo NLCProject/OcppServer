@@ -14,44 +14,36 @@ class TransactionModel : IscModel() {
     /**
      * Date when transaction is started.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var dateTimeStarted: String = String()
 
     /**
      * Date when transaction is stopped.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var dateTimeStopped: String = String()
 
     /**
      * Reason to stop.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var reasonToStop: Reason = Reason.Other
 
     /**
      * Current status.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var status: TransactionStatus = TransactionStatus.Ongoing
 
     /**
      * Current type.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var type: TransactionType = TransactionType.Outgoing
-    // TODO
 
     /**
      * External handled ID.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var externalId: Int = 0
 
     /**
      * Optional reservation ID. If 0, it is not reserved by a connector.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var reservationId: Int = 0
 
     /**
