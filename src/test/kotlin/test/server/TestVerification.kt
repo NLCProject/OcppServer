@@ -1,16 +1,9 @@
 package test.server
 
-import org.isc.utils.tests.TestVerification
+import org.isc.utils.tests.testVerification.TestVerification
 import org.junit.jupiter.api.Test
-import org.ocpp.server.Application
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = [Application::class])
 class TestVerification {
-
-    @Autowired
-    private lateinit var service: TestVerification
 
     private val testPackage = "test"
     private val testFileSuffix = "Test"
@@ -23,7 +16,7 @@ class TestVerification {
 
     @Test
     fun verifyTestClasses() {
-        service.verifyTestClasses(
+        TestVerification.verifyTestClasses(
             testPackage = testPackage,
             testFileSuffix = testFileSuffix,
             projectPackage = projectPackage,
