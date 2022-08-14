@@ -1,1 +1,292 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./my-app-theme.scss";
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html {
+  overflow: hidden !important;
+}
+
+.slider-settings {
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.infinite-scroll-container {
+  width: 100%;
+}
+
+.hide {
+  display: none !important;
+}
+
+.mat-dialog-container {
+  height: 95vh !important;
+  width: 100vw !important;
+  max-width: 1000px !important;
+}
+
+.mat-dialog-container-small .mat-dialog-container {
+  height: 300px !important;
+  width: 100vw !important;
+  max-width: 1200px !important;
+}
+
+.mat-dialog-container-medium .mat-dialog-container {
+  height: 400px !important;
+  width: 100vw !important;
+  max-width: 1000px !important;
+}
+
+.mat-dialog-container-password-reset .mat-dialog-container {
+  height: 500px !important;
+  width: 100vw !important;
+  max-width: 1000px !important;
+}
+
+.button-detail-container {
+  height: 100%;
+}
+
+.button {
+  width: 175px;
+}
+
+#cdk-overlay-0 {
+  overflow: auto;
+  max-width: 90vw !important;
+}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: hidden !important;
+}
+
+td.action {
+  width: 50px !important;
+}
+
+/**
+  Detail view
+ */
+
+.detail-title {
+  margin-bottom: 0;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.detail-body {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+mat-tab-group {
+  height: 100%;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.cdk-overlay-pane {
+  overflow: auto;
+}
+
+::ng-deep .cc-revoke .cc-revoke {
+  z-index: 1 !important;
+}
+
+mat-tab-header {
+  z-index: 99999 !important;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+
+.mat-tab-body-wrapper {
+  height: 100%;
+}
+
+mat-spinner {
+  width: 100%;
+}
+
+.button-shadow {
+  margin-bottom: 15px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+app-generic-details-return-button {
+  width: 100%;
+  height: 40px;
+  z-index: 99999 !important;
+}
+
+.chart-container {
+  height: 550px !important;
+}
+
+.small-chart-container {
+  height: 180px !important;
+}
+
+.mini-spacer {
+  width: 100% !important;
+  height: 10px !important;
+}
+
+.spacer {
+  width: 100% !important;
+  height: 50px !important;
+}
+
+.max-spacer {
+  width: 100% !important;
+  height: 150px !important;
+}
+
+app-generic-list-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+app-generic-list {
+  width: 100% !important;
+  overflow: auto;
+  height: 100%;
+}
+
+.alert-button {
+  color: red !important;
+}
+
+.warning-button {
+  color: darkorange !important;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .detail-div {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  mat-dialog-container {
+    width: 95vw !important;
+  }
+
+  .container {
+    width: 250px;
+  }
+
+  mat-form-field {
+    width: 250px;
+  }
+
+  .action-bar-first {
+    z-index: 1;
+    bottom: 230px !important;
+    right: 20px !important;
+    position: absolute !important;
+  }
+
+  .action-bar-second {
+    z-index: 1;
+    bottom: 300px !important;
+    right: 20px !important;
+    position: absolute !important;
+  }
+
+  .action-bar-third {
+    z-index: 1;
+    bottom: 100px !important;
+    right: 20px !important;
+    position: absolute !important;
+  }
+
+  .action-bar-fourth {
+    z-index: 1;
+    bottom: 170px !important;
+    right: 20px !important;
+    position: absolute !important;
+  }
+}
+
+@media (min-width: 577px) {
+  .detail-div {
+    height: 100%;
+    max-width: 1500px;
+    min-width: 750px;
+    overflow: auto;
+  }
+
+  .container {
+    width: 400px;
+  }
+
+  mat-form-field {
+    width: 400px;
+  }
+
+  .action-bar-first {
+    z-index: 1;
+    bottom: 230px !important;
+    right: 40px !important;
+    position: absolute !important;
+  }
+
+  .action-bar-second {
+    z-index: 1;
+    bottom: 300px !important;
+    right: 40px !important;
+    position: absolute !important;
+  }
+
+  .action-bar-third {
+    z-index: 1;
+    bottom: 100px !important;
+    right: 40px !important;
+    position: absolute !important;
+  }
+
+  .action-bar-fourth {
+    z-index: 1;
+    bottom: 170px !important;
+    right: 40px !important;
+    position: absolute !important;
+  }
+}
