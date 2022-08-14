@@ -1,7 +1,6 @@
 package test.server
 
 import org.isc.utils.tests.I18nKeyGenerator
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
 import org.springframework.beans.factory.annotation.Autowired

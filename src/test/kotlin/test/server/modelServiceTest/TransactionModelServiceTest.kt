@@ -1,20 +1,16 @@
 package test.server.modelServiceTest
 
-import org.isc.utils.tests.util.DataComparatorUtil
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.models.NamedModel
 import org.isc.utils.models.filter.FilterParameters
 import org.isc.utils.tests.ModelServiceTest
+import org.isc.utils.tests.util.DataComparatorUtil
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
-import org.ocpp.server.dtos.ConnectorModel
 import org.ocpp.server.dtos.TransactionModel
-import org.ocpp.server.entities.connectors.ConnectorEntity
-import org.ocpp.server.entities.connectors.ConnectorModelService
-import org.ocpp.server.entities.connectors.ConnectorRepository
 import org.ocpp.server.entities.transaction.TransactionEntity
 import org.ocpp.server.entities.transaction.TransactionModelService
 import org.ocpp.server.entities.transaction.TransactionRepository

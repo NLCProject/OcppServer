@@ -4,7 +4,6 @@ import org.isc.utils.genericCrudl.services.ModelService
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.models.NamedModel
 import org.isc.utils.models.filter.FilterParameters
-import org.isc.utils.utils.StringUtil
 import org.ocpp.server.dtos.SampledValueModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

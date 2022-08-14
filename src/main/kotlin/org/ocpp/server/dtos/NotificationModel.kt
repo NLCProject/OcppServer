@@ -3,8 +3,6 @@ package org.ocpp.server.dtos
 import eu.chargetime.ocpp.model.core.ChargePointErrorCode
 import eu.chargetime.ocpp.model.core.ChargePointStatus
 import org.isc.utils.annotations.GenerateTsModel
-import org.isc.utils.annotations.RestrictModelToEntityConversion
-import org.isc.utils.enums.ConversionRestriction
 import org.isc.utils.genericCrudl.models.IscModel
 import org.ocpp.server.enums.NotificationViewStatus
 

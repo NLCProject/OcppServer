@@ -1,8 +1,8 @@
 package test.server.repositoryTest
 
-import org.isc.utils.tests.util.DataComparatorUtil
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.tests.RepositoryServiceTest
+import org.isc.utils.tests.util.DataComparatorUtil
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application

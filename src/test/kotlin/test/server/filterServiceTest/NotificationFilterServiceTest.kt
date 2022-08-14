@@ -6,9 +6,6 @@ import org.isc.utils.models.filter.FilterParameters
 import org.isc.utils.tests.FilterServiceTest
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.ocpp.server.Application
-import org.ocpp.server.entities.connectors.ConnectorEntity
-import org.ocpp.server.entities.connectors.ConnectorFilterService
-import org.ocpp.server.entities.connectors.ConnectorRepository
 import org.ocpp.server.entities.notification.NotificationEntity
 import org.ocpp.server.entities.notification.NotificationFilterService
 import org.ocpp.server.entities.notification.NotificationRepository

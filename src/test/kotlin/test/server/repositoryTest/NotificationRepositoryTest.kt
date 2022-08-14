@@ -1,11 +1,9 @@
 package test.server.repositoryTest
 
-import org.isc.utils.tests.util.DataComparatorUtil
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.tests.RepositoryServiceTest
+import org.isc.utils.tests.util.DataComparatorUtil
 import org.ocpp.server.Application
-import org.ocpp.server.entities.connectors.ConnectorEntity
-import org.ocpp.server.entities.connectors.ConnectorRepository
 import org.ocpp.server.entities.notification.NotificationEntity
 import org.ocpp.server.entities.notification.NotificationRepository
 import org.ocpp.server.services.test.TestHelperService

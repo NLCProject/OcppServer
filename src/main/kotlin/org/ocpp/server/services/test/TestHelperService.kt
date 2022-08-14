@@ -118,7 +118,6 @@ class TestHelperService @Autowired constructor(
         return sampledValueRepository.save(entity = sampledValue, currentUser = currentUser)
     }
 
-
     fun createImage(currentUser: CurrentUser): ImageEntity {
         val image = ImageEntity()
         image.organisationId = currentUser.organisationId

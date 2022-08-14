@@ -1,10 +1,10 @@
 package test.server.modelServiceTest
 
-import org.isc.utils.tests.util.DataComparatorUtil
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.models.NamedModel
 import org.isc.utils.models.filter.FilterParameters
 import org.isc.utils.tests.ModelServiceTest
+import org.isc.utils.tests.util.DataComparatorUtil
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull

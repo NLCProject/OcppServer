@@ -1,20 +1,16 @@
 package test.server.modelServiceTest
 
-import org.isc.utils.tests.util.DataComparatorUtil
 import org.isc.utils.models.CurrentUser
 import org.isc.utils.models.NamedModel
 import org.isc.utils.models.filter.FilterParameters
 import org.isc.utils.tests.ModelServiceTest
+import org.isc.utils.tests.util.DataComparatorUtil
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
-import org.ocpp.server.dtos.MeterValueModel
 import org.ocpp.server.dtos.NotificationModel
-import org.ocpp.server.entities.meterValue.MeterValueEntity
-import org.ocpp.server.entities.meterValue.MeterValueModelService
-import org.ocpp.server.entities.meterValue.MeterValueRepository
 import org.ocpp.server.entities.notification.NotificationEntity
 import org.ocpp.server.entities.notification.NotificationModelService
 import org.ocpp.server.entities.notification.NotificationRepository
