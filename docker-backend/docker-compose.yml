@@ -31,7 +31,7 @@ services:
     container_name: angularContainer
     build: ../src/main/kotlin/org/ocpp/server/frontend
     volumes:
-      - '../src/main/kotlin/org/smart/ocpp/server/frontend:/usr/src/app'
+      - '../src/main/kotlin/org/ocpp/server/frontend:/usr/src/app'
     ports:
       - '4200:4200'
 
