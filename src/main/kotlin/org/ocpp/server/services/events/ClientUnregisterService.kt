@@ -6,6 +6,7 @@ import org.ocpp.client.application.Organisation
 import org.ocpp.client.event.server.ClientSessionLostEvent
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
+import org.ocpp.server.entities.smartHome.SmartHomeService
 import org.ocpp.server.services.events.interfaces.IClientUnregisterService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class ClientUnregisterService @Autowired constructor(
+    private val smartHomeService: SmartHomeService,
     private val smartHomeRepository: SmartHomeRepository
 ) : IClientUnregisterService {
 
@@ -29,6 +31,6 @@ class ClientUnregisterService @Autowired constructor(
 
     private fun removeClient(smartHome: SmartHomeEntity, currentUser: CurrentUser) {
         logger.info("Removing client ID '${smartHome.id}'")
-        smartHomeRepository.deleteById(id = smartHome.id, currentUser = currentUser)
+        smartHomeService.deleteEntity(id = smartHome.id, currentUser = currentUser)
     }
 }

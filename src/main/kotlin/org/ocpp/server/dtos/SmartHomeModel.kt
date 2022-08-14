@@ -20,13 +20,13 @@ class SmartHomeModel : IscModel() {
     /**
      * Identifier of the client.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
+    @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
     var identifier: String = String()
 
     /**
      * Session index of its current connection.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
+    @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
     var sessionIndex: String = String()
 
     /**
@@ -43,6 +43,5 @@ class SmartHomeModel : IscModel() {
     /**
      * Current status.
      */
-    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
     var status: SmartHomeStatus = SmartHomeStatus.Online
 }
