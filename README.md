@@ -1,5 +1,14 @@
 # OCPP Server
 
+## About this application
+The OCPP server application is an simplified counterpart to the H2B backend infrastructure and acts as centralized
+server among all clients in the network. Via the OCPP client library, the server can establish a communication to all
+clients in the network (a guide how to install the OCPP client libary can be found at https://github.com/NLCProject/OcppClient).
+
+The server provides the entire server functionality from the installed library and can be controlled via the provided
+frontend. Additionally, the frontend provides all data from the OCPP protocol of all connected clients (e.g. connection
+status, connector information, health status, current activities, ...).
+
 ## Docker
 Dockerfiles can be found for backend in directory <b>docker-backend</b>, for frontend at
 <b>src\main\kotlin\org\ocpp\server\frontend</b>.
@@ -9,9 +18,11 @@ Docker compose file can be found in directory <b>docker-backend</b>.
 ### Run in Docker
 In order to run the database, backend and frontend via the compose file run the following commands
 <ol>
-    <li>docker build -t org.ocpp.server:1.0.0 .</li>
-    <li>docker-compose up</li>
-    <li>Wait until all services has been loaded. Frontend service takes usually the longest (takes 1 or 2 minutes).</li>
+    <li>Go to folder <b>docker-backend</b></li>
+    <li>Run the file <b>publish.bat</b> in the terminal. This builds the required jar file for docker</li>
+    <li>Run command <b>docker build -t org.ocpp.server:1.0.0 .</b></li>
+    <li>Run command <b>docker-compose up</b></li>
+    <li>Wait until all services has been loaded. Frontend service takes usually the longest (1 or 2 minutes).</li>
     <li>Open the browser and access the application via <b>http://localhost:4200 </b></li>
 </ol>
 
@@ -91,6 +102,8 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 ## Literature
 <ul>
+    <li>https://github.com/NLCProject/OcppClient</li>
+    <li>https://github.com/NLCProject/BatteryController</li>
     <li>https://github.com/ChargeTimeEU/Java-OCA-OCPP/wiki</li>
     <li>https://github.com/ChargeTimeEU/Java-OCA-OCPP/wiki/Getting-started</li>
     <li>https://github.com/ChargeTimeEU/Java-OCA-OCPP/wiki/Setting-up-v1.6-OCPP-J-server</li>
