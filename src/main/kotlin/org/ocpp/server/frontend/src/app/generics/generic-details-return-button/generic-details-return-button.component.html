@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" style="height: 70px;">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <button mat-mini-fab (click)="returnToRoute()" color="primary">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="center center" *ngIf="titleI18nKey">
+    <h2>{{ titleI18nKey | translate }}</h2>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div fxLayout='column' fxLayoutAlign='start center' style='height: 100%;'>
+  <app-generic-list
+    [smartHomeId]="getSmartHomeId()"
+    [models]='models'
+    [loading]='isLoading()'
+    [routerPath]='routerPath'
+    (newPage)='newPage($event)'>
+  </app-generic-list>
+</div>

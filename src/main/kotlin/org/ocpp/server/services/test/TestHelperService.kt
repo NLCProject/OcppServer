@@ -43,23 +43,37 @@ class TestHelperService @Autowired constructor(
     private val dateConversionService: IDateConversionService
 ) {
 
-    fun createSmartHome(currentUser: CurrentUser): SmartHomeEntity {
+    fun createSmartHome(
+        id: String = Ids.getRandomId(),
+        name: String = Ids.getRandomId(),
+        identifier: String = Ids.getRandomId(),
+        sessionIndex: String = Ids.getRandomId(),
+        authorized: Boolean = Random.nextBoolean(),
+        status: SmartHomeStatus = SmartHomeStatus.values().random(),
+        currentUser: CurrentUser
+    ): SmartHomeEntity {
         val smartHome = SmartHomeEntity()
-        smartHome.authorized = Random.nextBoolean()
-        smartHome.identifier = Ids.getRandomId()
-        smartHome.name = Ids.getRandomId()
-        smartHome.sessionIndex = Ids.getRandomId()
-        smartHome.status = SmartHomeStatus.values().random()
+        smartHome.id = id
+        smartHome.authorized = authorized
+        smartHome.identifier = identifier
+        smartHome.name = name
+        smartHome.sessionIndex = sessionIndex
+        smartHome.status = status
         smartHome.imageId = createImage(currentUser = currentUser).id
         smartHome.organisationId = currentUser.organisationId
         return smartHomeRepository.save(entity = smartHome, currentUser = currentUser)
     }
 
-    fun createConnector(smartHome: SmartHomeEntity? = null, currentUser: CurrentUser): ConnectorEntity {
+    fun createConnector(
+        smartHome: SmartHomeEntity? = null,
+        externalId: Int = Ids.getRandomIdentifier(),
+        connectorName: String = Ids.getRandomId(),
+        currentUser: CurrentUser
+    ): ConnectorEntity {
         val connector = ConnectorEntity()
         connector.smartHome = smartHome ?: createSmartHome(currentUser = currentUser)
-        connector.connectorName = Ids.getRandomId()
-        connector.externalId = Ids.getRandomIdentifier()
+        connector.connectorName = connectorName
+        connector.externalId = externalId
         connector.organisationId = currentUser.organisationId
         return connectorRepository.save(entity = connector, currentUser = currentUser)
     }

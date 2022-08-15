@@ -11,9 +11,9 @@ export class NotificationModel {
     dateTimeCreated: string = '';
     vendorId: string = '';
     vendorErrorCode: string = '';
-    viewStatus: NotificationViewStatus = null;
-    status: ChargePointStatus = null;
-    errorCode: ChargePointErrorCode = null;
+    viewStatus: NotificationViewStatus | null = null;
+    status: ChargePointStatus | null = null;
+    errorCode: ChargePointErrorCode | null = null;
     connectorId: string = '';
     id: string = '';
     organisationId: string = '';

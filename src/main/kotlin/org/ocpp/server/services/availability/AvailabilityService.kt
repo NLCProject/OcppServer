@@ -7,6 +7,7 @@ import org.ocpp.server.enums.SmartHomeStatus
 import org.ocpp.server.services.availability.interfaces.IAvailabilityService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 
 @Service
@@ -18,6 +19,7 @@ class AvailabilityService @Autowired constructor(
     private val offsetStandby = 5_000
     private val offsetOffline = 30_000
 
+    @Scheduled(fixedRate = 5_000)
     override fun checkForUnavailableSmartHomes() {
         logger.trace("Checking for unavailable smart homes")
         val timestamp = System.currentTimeMillis()

@@ -6,6 +6,6 @@ import {NamedModel} from './NamedModel';
  */
 
 export class ListDataDto {
-    filters: FilterOptions = null;
+    filters: FilterOptions | null = null;
     listData: NamedModel[] = [];
 }

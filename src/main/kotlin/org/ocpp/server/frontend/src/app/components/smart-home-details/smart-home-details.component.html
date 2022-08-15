@@ -1,0 +1,39 @@
+<div class="spacer"></div>
+<form *ngIf="formGroup" [formGroup]="formGroup" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%;">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+  </div>
+
+  <mat-form-field>
+    <input matInput required placeholder="{{ 'Name' | translate }}" formControlName="name">
+  </mat-form-field>
+</form>
+
+<app-generic-details-save-button
+  class="action-bar-second"
+  [loading]="loading"
+  [routerPath]="routerPath"
+  [disabled]="formGroup?.valid === false"
+  [isVisible]="isVisible"
+  (updateModel)="updateModel()"></app-generic-details-save-button>
+
+<button mat-fab
+        class="action-bar-first"
+        [class.spinner]="loading"
+        [disabled]="loading || !model"
+        [matMenuTriggerFor]="menu">
+  <mat-icon>edit</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <div fxLayout="column" fxLayoutAlign="center start" style="width: 280px;">
+    <button mat-menu-item
+            class="alert-button"
+            (click)="delete()"
+            [class.spinner]="loading"
+            [disabled]="loading">
+      <mat-icon class="alert-button">delete</mat-icon>
+      <span>{{ 'Delete' | translate }}</span>
+    </button>
+  </div>
+</mat-menu>

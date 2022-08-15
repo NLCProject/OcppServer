@@ -1,4 +1,4 @@
-import {Injectable, NgZone} from '@angular/core';
+import {Inject, Injectable, NgZone} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -9,8 +9,8 @@ export abstract class RouterUtilService {
   protected constructor(
     protected router: Router,
     private ngZone: NgZone,
-    public routerPath: string,
-    protected index: number,
+    @Inject(String) public routerPath: string,
+    @Inject(Number) protected index: number,
 ) { }
 
   public getRoute(): string {

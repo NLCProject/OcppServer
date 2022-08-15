@@ -10,8 +10,8 @@ export class SmartHomeModel {
     identifier: string = '';
     sessionIndex: string = '';
     authorized: boolean = false;
-    image: ImageModel = null;
-    status: SmartHomeStatus = null;
+    image: ImageModel | null = null;
+    status: SmartHomeStatus | null = null;
     id: string = '';
     organisationId: string = '';
     timestampCreated: number = 0;

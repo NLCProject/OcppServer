@@ -5,6 +5,6 @@ import {FilterKey} from './FilterKey';
  */
 
 export class KeyOption {
-    key: FilterKey = null;
+    key: FilterKey | null = null;
     preSelected: boolean = false;
 }

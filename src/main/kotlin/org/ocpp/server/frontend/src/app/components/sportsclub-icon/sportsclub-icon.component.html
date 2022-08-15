@@ -1,0 +1,9 @@
+<div *ngIf="models.length > 0" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="center center">
+  <mat-icon *ngFor="let icon of models"
+            matTooltip="{{ icon.i18nKey | translate }}"
+            mat-list-icon>{{ icon.iconKey }}</mat-icon>
+</div>
+
+<mat-icon *ngIf="model"
+          matTooltip="{{ model.i18nKey | translate }}"
+          mat-list-icon>{{ model.iconKey }}</mat-icon>

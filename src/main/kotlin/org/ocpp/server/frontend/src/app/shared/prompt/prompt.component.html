@@ -1,0 +1,13 @@
+<div fxLayoutAlign="center center" fxLayoutGap="20px" fxLayout="column" style="height: 100%;">
+  <h3>{{ data.translationKey | translate }}</h3>
+
+  <div class="full-width button-shadow" fxLayoutAlign="center end" fxLayoutGap="10px" fxLayout="row">
+    <button mat-fab (click)="closeAndReturnAnswer(true)" color="accent" *ngIf="data.showAccept">
+      <mat-icon>check</mat-icon>
+    </button>
+
+    <button mat-fab (click)="closeAndReturnAnswer(false)" color="primary">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

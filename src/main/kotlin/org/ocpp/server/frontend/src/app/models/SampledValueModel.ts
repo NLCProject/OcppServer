@@ -8,10 +8,10 @@ import {Location} from './Location';
 export class SampledValueModel {
     valueData: string = '';
     contextData: string = '';
-    formatData: ValueFormat = null;
+    formatData: ValueFormat | null = null;
     measurand: string = '';
     phaseData: string = '';
-    location: Location = null;
+    location: Location | null = null;
     unit: string = '';
     meterValueId: string = '';
     id: string = '';

@@ -26,6 +26,17 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionModule} from '@angular/material/core';
+import { SmartHomeOverviewComponent } from './components/smart-home-overview/smart-home-overview.component';
+import { SmartHomeDetailsComponent } from './components/smart-home-details/smart-home-details.component';
+import { GenericListWrapperComponent } from './generics/generic-list-wrapper/generic-list-wrapper.component';
+import { GenericListComponent } from './generics/generic-list/generic-list.component';
+import { GenericDetailsSaveButtonComponent } from './generics/generic-details-save-button/generic-details-save-button.component';
+import { GenericDetailsReturnButtonComponent } from './generics/generic-details-return-button/generic-details-return-button.component';
+import { SmartHomeDetailsOverviewComponent } from './components/smart-home-details-overview/smart-home-details-overview.component';
+import { ConnectorDetailsComponent } from './components/connector-details/connector-details.component';
+import { PromptComponent } from './shared/prompt/prompt.component';
+import { SportsclubIconComponent } from './components/sportsclub-icon/sportsclub-icon.component';
+import { ConnectorOverviewComponent } from './components/connector-overview/connector-overview.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -34,7 +45,18 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    SmartHomeOverviewComponent,
+    SmartHomeDetailsComponent,
+    GenericListWrapperComponent,
+    GenericListComponent,
+    GenericDetailsSaveButtonComponent,
+    GenericDetailsReturnButtonComponent,
+    SmartHomeDetailsOverviewComponent,
+    ConnectorDetailsComponent,
+    PromptComponent,
+    SportsclubIconComponent,
+    ConnectorOverviewComponent
   ],
   imports: [
     AppRoutingModule,

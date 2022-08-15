@@ -1,0 +1,9 @@
+<button
+  mat-fab
+  *ngIf="isVisible"
+  (click)="updateModel.emit()"
+  [class.spinner]="loading"
+  [disabled]="loading || disabled"
+  color="accent">
+  <mat-icon>save</mat-icon>
+</button>

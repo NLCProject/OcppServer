@@ -1,0 +1,25 @@
+mat-list, mat-divider, mat-list-item, div {
+  width: 100%;
+}
+
+mat-list {
+  cursor: pointer;
+  padding-top: 0 !important;
+}
+
+img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+h1 {
+  color: lightgray;
+}
+
+.return-to-top.mat-fab {
+  z-index: 1;
+  bottom: 20px !important;
+  left: 43% !important;
+  position: absolute;
+}

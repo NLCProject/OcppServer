@@ -9,7 +9,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export abstract class RestHelperService<MODEL, ABSTRACTMODEL> {
 
-  protected abstract path: string;
+  protected abstract path: string = '';
 
   protected constructor(
     protected http: HttpClient
@@ -27,6 +27,11 @@ export abstract class RestHelperService<MODEL, ABSTRACTMODEL> {
         Id: ''
       })
     };
+  }
+
+  public findAllBySmartHomeId(page: number, smartHomeId: string): Observable<ABSTRACTMODEL[]> {
+    const url = `${this.getBaseUrl(this.path)}/findAllBySmartHomeId?smartHomeId=${smartHomeId}&page=${page}`;
+    return this.http.get<ABSTRACTMODEL[]>(url, this.getHeaders());
   }
 
   public save(model: MODEL): Observable<IdModel> {

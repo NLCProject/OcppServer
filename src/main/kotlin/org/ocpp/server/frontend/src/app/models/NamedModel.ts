@@ -7,9 +7,9 @@ import {IconModel} from './IconModel';
 
 export class NamedModel {
     userId: string = '';
-    firstLine: NamedLineModel = null;
-    secondLine: NamedLineModel = null;
-    thirdLine: NamedLineModel = null;
+    firstLine: NamedLineModel | null = null;
+    secondLine: NamedLineModel | null = null;
+    thirdLine: NamedLineModel | null = null;
     dateParsed: string = '';
     thumbnail: string = '';
     data: any = null;

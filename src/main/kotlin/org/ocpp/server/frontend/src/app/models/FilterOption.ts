@@ -11,6 +11,6 @@ export class FilterOption {
     className: string = '';
     values: ValueOption[] = [];
     keys: KeyOption[] = [];
-    icon: IconModel = null;
-    i18nKey: I18nKey = null;
+    icon: IconModel | null = null;
+    i18nKey: I18nKey | null = null;
 }

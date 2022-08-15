@@ -1,0 +1,25 @@
+<app-generic-details-return-button [titleI18nKey]="I18nKey[I18nKey.SmartHome]"
+                                   [parentRouterPath]="'smart-home'"></app-generic-details-return-button>
+
+<div (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')" style="width: 100%; height: 100%;">
+  <div fxLayout='column' fxLayoutAlign='center center'>
+    <mat-spinner *ngIf='loading'></mat-spinner>
+  </div>
+
+  <mat-tab-group [(selectedIndex)]="selectedTab" mat-align-tabs="center" style="height: 100%;">
+    <mat-tab label="{{ 'SmartHome' | translate }}" [disabled]="!id || !model || id?.length === 0 || loading">
+      <app-smart-home-details
+        *ngIf="selectedTab === 0 && model"
+        [model]="model"
+        [id]="id">
+      </app-smart-home-details>
+    </mat-tab>
+
+    <mat-tab label="{{ 'Connectors' | translate }}" [disabled]="!id || !model || id?.length === 0 || loading">
+      <app-connector-overview
+        *ngIf="selectedTab === 1 && model"
+        [smartHomeId]="id">
+      </app-connector-overview>
+    </mat-tab>
+  </mat-tab-group>
+</div>

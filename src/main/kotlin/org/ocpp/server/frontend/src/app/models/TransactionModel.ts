@@ -9,9 +9,9 @@ import {TransactionType} from './TransactionType';
 export class TransactionModel {
     dateTimeStarted: string = '';
     dateTimeStopped: string = '';
-    reasonToStop: Reason = null;
-    status: TransactionStatus = null;
-    type: TransactionType = null;
+    reasonToStop: Reason | null = null;
+    status: TransactionStatus | null = null;
+    type: TransactionType | null = null;
     externalId: number = 0;
     reservationId: number = 0;
     connectorId: string = '';
