@@ -1,5 +1,7 @@
-package test.server
+package test.others
 
+import eu.chargetime.ocpp.model.core.AvailabilityType
+import eu.chargetime.ocpp.model.core.ResetType
 import org.isc.utils.tests.TypescriptModelGenerator
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
@@ -17,7 +19,8 @@ class TypescriptModelGeneratorTest {
         service.generate(
             packageName = "org/ocpp/server",
             subPackages = listOf("dtos", "enums"),
-            pathToTypescriptModels = "./src/main/kotlin/org/ocpp/server/frontend/src/app/models"
+            pathToTypescriptModels = "./src/main/kotlin/org/ocpp/server/frontend/src/app/models",
+            additionalClassesToPrint = listOf(AvailabilityType::class.java, ResetType::class.java)
         )
     }
 }

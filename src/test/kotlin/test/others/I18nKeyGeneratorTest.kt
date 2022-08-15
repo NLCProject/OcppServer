@@ -1,4 +1,4 @@
-package test.server
+package test.others
 
 import org.isc.utils.tests.I18nKeyGenerator
 import org.junit.jupiter.api.Test
