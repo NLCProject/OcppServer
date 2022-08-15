@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {RestHelperService} from './rest-helper.service';
 import {NamedModel} from '../models/NamedModel';
-import {ImageModel} from "../models/ImageModel";
-import {Observable} from "rxjs";
+import {ImageModel} from '../models/ImageModel';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

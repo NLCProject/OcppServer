@@ -1,10 +1,10 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {RouterUtilService} from "../../services/router-util.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {TranslationService} from "../../services/translation.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ConnectorService} from "../../services/connector.service";
-import {ConnectorModel} from "../../models/ConnectorModel";
+import {RouterUtilService} from '../../services/router-util.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {TranslationService} from '../../services/translation.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ConnectorService} from '../../services/connector.service';
+import {ConnectorModel} from '../../models/ConnectorModel';
 
 @Component({
   selector: 'app-connector-details',

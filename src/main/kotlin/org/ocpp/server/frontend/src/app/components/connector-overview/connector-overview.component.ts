@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ConnectorService} from "../../services/connector.service";
+import {ConnectorService} from '../../services/connector.service';
 
 @Component({
   selector: 'app-connector-overview',

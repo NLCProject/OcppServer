@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {I18nKey} from "../../models/I18nKey";
-import {SmartHomeModel} from "../../models/SmartHomeModel";
-import {ActivatedRoute} from "@angular/router";
-import {TranslationService} from "../../services/translation.service";
-import {SmartHomeService} from "../../services/smart-home.service";
+import {I18nKey} from '../../models/I18nKey';
+import {SmartHomeModel} from '../../models/SmartHomeModel';
+import {ActivatedRoute} from '@angular/router';
+import {TranslationService} from '../../services/translation.service';
+import {SmartHomeService} from '../../services/smart-home.service';
 
 @Component({
   selector: 'app-smart-home-details-overview',

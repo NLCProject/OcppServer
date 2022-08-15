@@ -7,9 +7,9 @@ import org.ocpp.server.entities.smartHome.SmartHomeRepository
 import org.ocpp.server.enums.SmartHomeStatus
 import org.ocpp.server.services.migration.data.Connector
 import org.ocpp.server.services.migration.data.SmartHomes
+import org.ocpp.server.services.migration.interfaces.IMigrationService
 import org.ocpp.server.services.test.TestHelperService
 import org.slf4j.LoggerFactory
-import org.ocpp.server.services.migration.interfaces.IMigrationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
