@@ -1,4 +1,5 @@
-
+import {ValueFormat} from './ValueFormat';
+import {Location} from './Location';
 
 /**
  * Auto-generated file. Do NOT change, run test 'TypescriptModelGeneratorTest' instead
@@ -7,10 +8,10 @@
 export class SampledValueModel {
     valueData: string = '';
     contextData: string = '';
-    formatData: eu.chargetime.ocpp.model.core.ValueFormat = null;
+    formatData: ValueFormat = null;
     measurand: string = '';
     phaseData: string = '';
-    location: eu.chargetime.ocpp.model.core.Location = null;
+    location: Location = null;
     unit: string = '';
     meterValueId: string = '';
     id: string = '';

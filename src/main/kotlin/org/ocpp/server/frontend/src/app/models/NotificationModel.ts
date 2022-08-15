@@ -1,4 +1,6 @@
-
+import {NotificationViewStatus} from './NotificationViewStatus';
+import {ChargePointStatus} from './ChargePointStatus';
+import {ChargePointErrorCode} from './ChargePointErrorCode';
 
 /**
  * Auto-generated file. Do NOT change, run test 'TypescriptModelGeneratorTest' instead
@@ -9,9 +11,9 @@ export class NotificationModel {
     dateTimeCreated: string = '';
     vendorId: string = '';
     vendorErrorCode: string = '';
-    viewStatus: org.ocpp.server.enums.NotificationViewStatus = null;
-    status: eu.chargetime.ocpp.model.core.ChargePointStatus = null;
-    errorCode: eu.chargetime.ocpp.model.core.ChargePointErrorCode = null;
+    viewStatus: NotificationViewStatus = null;
+    status: ChargePointStatus = null;
+    errorCode: ChargePointErrorCode = null;
     connectorId: string = '';
     id: string = '';
     organisationId: string = '';

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {RestHelperService} from './rest-helper.service';
 import {NamedModel} from '../models/NamedModel';
-import {ConnectorModel} from "../models/ConnectorModel";
-import {SmartHomeModel} from "../models/SmartHomeModel";
-import {ImageModel} from "../models/ImageModel";
-import {Observable} from "rxjs";
+import {SmartHomeModel} from '../models/SmartHomeModel';
+import {Observable} from 'rxjs';
+import {AvailabilityType} from '../models/AvailabilityType';
+import {ResetType} from '../models/ResetType';
 
 @Injectable({
   providedIn: 'root'

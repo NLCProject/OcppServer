@@ -1,4 +1,6 @@
-
+import {Reason} from './Reason';
+import {TransactionStatus} from './TransactionStatus';
+import {TransactionType} from './TransactionType';
 
 /**
  * Auto-generated file. Do NOT change, run test 'TypescriptModelGeneratorTest' instead
@@ -7,9 +9,9 @@
 export class TransactionModel {
     dateTimeStarted: string = '';
     dateTimeStopped: string = '';
-    reasonToStop: eu.chargetime.ocpp.model.core.Reason = null;
-    status: org.ocpp.server.enums.TransactionStatus = null;
-    type: org.ocpp.server.enums.TransactionType = null;
+    reasonToStop: Reason = null;
+    status: TransactionStatus = null;
+    type: TransactionType = null;
     externalId: number = 0;
     reservationId: number = 0;
     connectorId: string = '';
