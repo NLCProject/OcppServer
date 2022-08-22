@@ -11,6 +11,7 @@ import org.ocpp.server.services.migration.interfaces.IMigrationService
 import org.ocpp.server.services.test.TestHelperService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -21,9 +22,15 @@ class MigrationService @Autowired constructor(
     private val testHelperService: TestHelperService
 ) : IMigrationService {
 
+    @Value("\${ocpp.migration.enabled}")
+    var migrationEnabled: Boolean = false
+
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     override fun startMigration() {
+        if (!migrationEnabled)
+            return logger.warn("Data migration disabled")
+
         logger.info("Starting data migration")
         val currentUser = CurrentUserFactory.getCurrentUser(
             organisationId = Organisation.id,
