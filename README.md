@@ -23,7 +23,7 @@ In order to run the database, backend and frontend via the compose file run the 
     <li>Run command <b>docker build -t org.ocpp.server:1.0.0 .</b></li>
     <li>Run command <b>docker-compose up</b></li>
     <li>Wait until all services has been loaded. Frontend service takes usually the longest (1 or 2 minutes).</li>
-    <li>Open the browser and access the application via <b>http://localhost:4200 </b></li>
+    <li>Open the browser and access the application via <b>http://localhost:4200</b></li>
 </ol>
 
 <b>Warning</b>: The database image exposes its port on 3306. Make sure you don't run any other database instance on your machine
