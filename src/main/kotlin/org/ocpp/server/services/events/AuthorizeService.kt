@@ -30,7 +30,7 @@ class AuthorizeService @Autowired constructor(
     }
 
     private fun authorizeSmartHome(smartHome: SmartHomeEntity) {
-        logger.info("Registering new charge point for smart home ID '${smartHome.id}'")
+        logger.info("Authorizing smart home ID '${smartHome.id}'")
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         smartHome.lastHeartbeatTimestamp = System.currentTimeMillis()
         smartHome.status = SmartHomeStatus.Online
