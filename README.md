@@ -103,6 +103,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 ## Literature
 <ul>
     <li>https://github.com/NLCProject/OcppClient</li>
+    <li>https://github.com/NLCProject/OcppSmartHome</li>
     <li>https://github.com/NLCProject/BatteryController</li>
     <li>https://github.com/ChargeTimeEU/Java-OCA-OCPP/wiki</li>
     <li>https://github.com/ChargeTimeEU/Java-OCA-OCPP/wiki/Getting-started</li>
