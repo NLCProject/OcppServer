@@ -5,7 +5,7 @@ services:
     container_name: database
     restart: always
     environment:
-      MYSQL_DATABASE: its
+      MYSQL_DATABASE: ocppServer
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: root
