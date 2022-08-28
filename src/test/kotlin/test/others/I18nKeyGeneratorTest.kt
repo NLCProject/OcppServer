@@ -1,5 +1,6 @@
 package test.others
 
+import org.battery.controller.util.controller.enums.I18nKey
 import org.isc.utils.tests.I18nKeyGenerator
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
@@ -23,6 +24,7 @@ class I18nKeyGeneratorTest {
             pathToSources = "./src/main/kotlin/org/ocpp/server/frontend/src/app",
             snackbarFunctions = listOf("showSnackbarOnError", "showSnackbar"),
             additionalI18nKeys = emptyList(),
+            additionalI18nKeysWithDescription = I18nKey.values().map { it.name },
             i18nKeysToIgnore = listOf("Cookie", "Yes", "No", "To", "true", "false"),
             topLevelFoldersToInclude = listOf("shared", "generics", "toolbar", "password-reset", "login", "translation")
         )
