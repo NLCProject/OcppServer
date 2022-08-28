@@ -1,7 +1,13 @@
 package test.others
 
 import eu.chargetime.ocpp.model.core.*
+import org.battery.controller.util.controller.enums.AccessType
+import org.battery.controller.util.controller.enums.DataType
 import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
+import org.battery.controller.util.controller.modbusSimulator.commands.ModbusRequest
+import org.battery.controller.util.controller.modbusSimulator.commands.ModbusResponse
+import org.battery.controller.util.controller.register.Register
+import org.battery.controller.util.controller.register.descriptors.Descriptor
 import org.isc.utils.tests.TypescriptModelGenerator
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
@@ -26,9 +32,15 @@ class TypescriptModelGeneratorTest {
                 ChargePointErrorCode::class.java,
                 ChargePointStatus::class.java,
                 AvailabilityType::class.java,
+                ModbusResponse::class.java,
+                ModbusRequest::class.java,
                 ModbusCommand::class.java,
                 ValueFormat::class.java,
+                AccessType::class.java,
+                Descriptor::class.java,
                 ResetType::class.java,
+                DataType::class.java,
+                Register::class.java,
                 Location::class.java,
                 Reason::class.java
             )
