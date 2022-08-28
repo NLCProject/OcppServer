@@ -1,6 +1,7 @@
 package test.others
 
 import eu.chargetime.ocpp.model.core.*
+import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
 import org.isc.utils.tests.TypescriptModelGenerator
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
@@ -21,12 +22,13 @@ class TypescriptModelGeneratorTest {
             subPackages = listOf("dtos", "enums"),
             pathToTypescriptModels = "./src/main/kotlin/org/ocpp/server/frontend/src/app/models",
             additionalClassesToPrint = listOf(
-                AvailabilityType::class.java,
-                ResetType::class.java,
                 NotificationViewStatus::class.java,
-                ChargePointStatus::class.java,
                 ChargePointErrorCode::class.java,
+                ChargePointStatus::class.java,
+                AvailabilityType::class.java,
+                ModbusCommand::class.java,
                 ValueFormat::class.java,
+                ResetType::class.java,
                 Location::class.java,
                 Reason::class.java
             )

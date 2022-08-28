@@ -102,6 +102,8 @@ export enum I18nKey {
     RejectedTooltip,
     InProgressTooltip,
     OnGoingTooltip,
+    StandBy,
+    Offline,
     FeedbackTooltip,
     CriticalTooltip,
     BugTooltip,
