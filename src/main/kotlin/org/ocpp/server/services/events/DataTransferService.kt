@@ -6,6 +6,7 @@ import org.battery.controller.util.controller.modbusSimulator.commands.ModbusRes
 import org.isc.utils.serialization.JsonSerialization
 import org.ocpp.client.event.server.request.ServerDataTransferRequestEvent
 import org.ocpp.server.services.events.interfaces.IDataTransferService
+import org.ocpp.server.services.modbus.SmartHomeCommandCache
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -30,8 +31,8 @@ class DataTransferService : IDataTransferService, JsonSerialization() {
     }
 
     private fun handleOnInit(data: ModbusOnInit) {
-        logger.info("Handling on init data")
-        // TODO
+        logger.info("Handling on init data for ID tag '${data.idTag}'")
+        SmartHomeCommandCache.registerCommands(idTag = data.idTag, commands = data.availableCommands)
     }
 
     private fun handleResponse(data: ModbusResponse) {

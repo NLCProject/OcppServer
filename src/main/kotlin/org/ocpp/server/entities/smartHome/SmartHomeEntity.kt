@@ -56,6 +56,12 @@ class SmartHomeEntity : IscEntity() {
     var sessionIndex: String = String()
 
     /**
+     * ID via which the clients sends requests to identify itself on this server.
+     */
+    @Column
+    var idTag: String = String()
+
+    /**
      * Boolean if smart home has been authorized.
      */
     @Column

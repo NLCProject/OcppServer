@@ -1,5 +1,6 @@
 package org.ocpp.server.dtos
 
+import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
 import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
@@ -41,4 +42,9 @@ class SmartHomeModel : IscModel() {
      * Current status.
      */
     var status: SmartHomeStatus = SmartHomeStatus.Online
+
+    /**
+     *
+     */
+    var availableCommands: List<ModbusCommand> = emptyList()
 }

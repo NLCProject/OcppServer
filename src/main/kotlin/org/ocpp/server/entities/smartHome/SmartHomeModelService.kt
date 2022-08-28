@@ -11,6 +11,7 @@ import org.ocpp.server.dtos.SmartHomeModel
 import org.ocpp.server.entities.image.ImageModelService
 import org.ocpp.server.entities.image.ImageRepository
 import org.ocpp.server.enums.SmartHomeStatus
+import org.ocpp.server.services.modbus.SmartHomeCommandCache
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -33,15 +34,13 @@ class SmartHomeModelService @Autowired constructor(
         currentUser: CurrentUser
     ) {
         model.image = imageModelService.findById(id = entity.imageId, currentUser = currentUser)
+
+        if (entity.idTag.isNotEmpty())
+            model.availableCommands = SmartHomeCommandCache.getCommands(idTag = entity.idTag)
     }
 
     override fun createAbstractModel(entity: SmartHomeEntity, model: NamedModel, currentUser: CurrentUser) {
-        model.firstLine.text = StringUtil.joinWithSeparatorWithSpace(
-            separator = "|",
-            entity.name,
-            entity.identifier
-        )
-
+        model.firstLine.text = StringUtil.joinWithSeparatorWithSpace(separator = "|", entity.name, entity.idTag)
         model.secondLine.text = entity.status.name
         model.secondLine.translate = true
         model.thumbnail = imageRepoService.findThumbnail(id = entity.imageId, currentUser = currentUser)

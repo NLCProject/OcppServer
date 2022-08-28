@@ -26,15 +26,16 @@ class AuthorizeService @Autowired constructor(
         if (!optional.isPresent)
             throw Exception("Smart home with session index '${event.sessionIndex}' not found")
 
-        authorizeSmartHome(smartHome = optional.get())
+        authorizeSmartHome(smartHome = optional.get(), idTag = event.request.idTag)
     }
 
-    private fun authorizeSmartHome(smartHome: SmartHomeEntity) {
+    private fun authorizeSmartHome(smartHome: SmartHomeEntity, idTag: String) {
         logger.info("Authorizing smart home ID '${smartHome.id}'")
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         smartHome.lastHeartbeatTimestamp = System.currentTimeMillis()
         smartHome.status = SmartHomeStatus.Online
         smartHome.authorized = true
+        smartHome.idTag = idTag
         smartHomeRepository.save(entity = smartHome, currentUser = currentUser)
     }
 }
