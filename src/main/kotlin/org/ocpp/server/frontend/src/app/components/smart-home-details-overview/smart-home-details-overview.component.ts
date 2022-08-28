@@ -25,7 +25,7 @@ export class SmartHomeDetailsOverviewComponent implements OnInit {
   public selectedTab = 0;
   private swipeCoordinate: [number, number] = [0, 0];
   private swipeTime = 0;
-  private numberTabs = 2;
+  private numberTabs = 3;
 
   ngOnInit(): void {
     this.selectedTab = +JSON.parse(this.route!!.snapshot.paramMap.get('index')!!);

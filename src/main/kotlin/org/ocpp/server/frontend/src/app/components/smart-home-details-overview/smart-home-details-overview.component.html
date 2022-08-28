@@ -15,9 +15,17 @@
       </app-smart-home-details>
     </mat-tab>
 
+    <mat-tab label="{{ 'Commands' | translate }}" [disabled]="!id || !model || id?.length === 0 || loading">
+      <app-smart-home-commands
+        *ngIf="selectedTab === 1 && model"
+        [model]="model"
+        [id]="id">
+      </app-smart-home-commands>
+    </mat-tab>
+
     <mat-tab label="{{ 'Connectors' | translate }}" [disabled]="!id || !model || id?.length === 0 || loading">
       <app-connector-overview
-        *ngIf="selectedTab === 1 && model"
+        *ngIf="selectedTab === 2 && model"
         [smartHomeId]="id">
       </app-connector-overview>
     </mat-tab>

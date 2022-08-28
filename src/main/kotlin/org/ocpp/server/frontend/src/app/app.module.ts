@@ -37,6 +37,8 @@ import { ConnectorDetailsComponent } from './components/connector-details/connec
 import { PromptComponent } from './shared/prompt/prompt.component';
 import { SportsclubIconComponent } from './components/sportsclub-icon/sportsclub-icon.component';
 import { ConnectorOverviewComponent } from './components/connector-overview/connector-overview.component';
+import { SmartHomeCommandsComponents } from './components/smart-home-commands/smart-home-commands.components';
+import { CommandOverviewComponent } from './components/smart-home-commands/command-overview/command-overview.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -56,7 +58,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ConnectorDetailsComponent,
     PromptComponent,
     SportsclubIconComponent,
-    ConnectorOverviewComponent
+    ConnectorOverviewComponent,
+    SmartHomeCommandsComponents,
+    CommandOverviewComponent
   ],
   imports: [
     AppRoutingModule,
