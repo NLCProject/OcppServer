@@ -9,6 +9,7 @@ interface IUnlockConnectorService {
      * Sends unlock event.
      *
      * @param connectorId .
+     * @param sessionIndex .
      */
-    fun unlockConnector(connectorId: Int)
+    fun unlockConnector(connectorId: Int, sessionIndex: String)
 }

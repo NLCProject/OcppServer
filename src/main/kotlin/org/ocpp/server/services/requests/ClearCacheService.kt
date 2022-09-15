@@ -13,8 +13,8 @@ class ClearCacheService @Autowired constructor(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun clearCache() {
-        logger.info("Clearing cache")
-        serverRequestService.clearCache()
+    override fun clearCache(sessionIndex: String) {
+        logger.info("Clearing cache | session index '$sessionIndex'")
+        serverRequestService.clearCache(sessionIndex = sessionIndex)
     }
 }

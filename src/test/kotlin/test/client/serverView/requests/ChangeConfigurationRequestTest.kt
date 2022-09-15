@@ -22,7 +22,7 @@ class ChangeConfigurationRequestTest : ServerRequestTest() {
     fun sendRequest() {
         val key = Ids.getRandomIdString()
         val value = Ids.getRandomIdString()
-        val confirmation = serverRequestService.changeConfiguration(key = key, value = value)
+        val confirmation = serverRequestService.changeConfiguration(key = key, value = value, sessionIndex = Ids.getRandomUUIDString())
         assertEquals(ConfigurationStatus.Accepted, confirmation.status)
 
         val argumentCaptor = argumentCaptor<ChangeConfigurationRequestEvent>()

@@ -21,8 +21,8 @@ class RemoteStartTransactionService @Autowired constructor(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun start(connectorId: Int) {
-        logger.info("Starting transaction ID '$connectorId' via remote")
+    override fun start(connectorId: Int, sessionIndex: String) {
+        logger.info("Starting transaction ID '$connectorId' via remote | session index '$sessionIndex'")
         val optional = connectorRepository.findByExternalId(externalId = connectorId)
         if (!optional.isPresent)
             throw Exception("Connector with external ID '$connectorId' not found")
@@ -38,9 +38,9 @@ class RemoteStartTransactionService @Autowired constructor(
 
         serverRequestService.remoteStartTransaction(
             connectorId = connectorId,
-            // TODO
             idTag = Organisation.validationId,
-            profile = profile
+            profile = profile,
+            sessionIndex = sessionIndex
         )
     }
 }

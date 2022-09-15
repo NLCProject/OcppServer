@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*
  * REST controller for images.
  */
 @Controller
-@RequestMapping(path = ["image"])
+@RequestMapping(path = ["/image"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class ImageController @Autowired constructor(
     private val modelService: ImageModelService,

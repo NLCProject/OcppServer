@@ -11,6 +11,7 @@ interface IResetService {
      * Sends reset event. Closes all ongoing transactions
      *
      * @param type Type of reset.
+     * @param sessionIndex .
      */
-    fun reset(type: ResetType)
+    fun reset(type: ResetType, sessionIndex: String)
 }

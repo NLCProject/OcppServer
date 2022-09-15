@@ -9,6 +9,7 @@ import org.mockito.Mock
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.verify
 import org.ocpp.client.server.interfaces.IServerRequestService
+import org.ocpp.client.utils.Ids
 import org.ocpp.server.Application
 import org.ocpp.server.entities.transaction.TransactionRepository
 import org.ocpp.server.entities.transaction.TransactionService
@@ -62,13 +63,14 @@ class ChangeAvailabilityServiceTest {
             currentUser = currentUser
         )
 
-        service.changeAvailability(connectorId = connector1.externalId, type = type)
+        val sessionIndex = Ids.getRandomUUIDString()
+        service.changeAvailability(connectorId = connector1.externalId, type = type, sessionIndex = Ids.getRandomUUIDString())
         transaction1 = transactionRepository.findById(id = transaction1.id, currentUser = currentUser)
         assertEquals(TransactionStatus.Finished, transaction1.status)
 
         transaction2 = transactionRepository.findById(id = transaction2.id, currentUser = currentUser)
         assertEquals(TransactionStatus.Finished, transaction2.status)
 
-        verify(serverRequestService).changeAvailability(connectorId = eq(connector1.externalId), type = eq(type))
+        verify(serverRequestService).changeAvailability(connectorId = eq(connector1.externalId), type = eq(type), sessionIndex = eq(sessionIndex))
     }
 }

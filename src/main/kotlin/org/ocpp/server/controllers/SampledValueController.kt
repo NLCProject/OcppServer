@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*
  * REST controller for sampled values.
  */
 @Controller
-@RequestMapping(path = ["sampled-value"])
+@RequestMapping(path = ["/sampled-value"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class SampledValueController @Autowired constructor(
     entityService: SampledValueService,

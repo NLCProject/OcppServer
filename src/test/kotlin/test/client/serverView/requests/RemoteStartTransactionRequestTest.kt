@@ -27,7 +27,8 @@ class RemoteStartTransactionRequestTest : ServerRequestTest() {
         val confirmation = serverRequestService.remoteStartTransaction(
             connectorId = connectorId,
             idTag = idTag,
-            profile = null
+            profile = null,
+            sessionIndex = Ids.getRandomUUIDString()
         )
 
         assertEquals(RemoteStartStopStatus.Accepted, confirmation.status)

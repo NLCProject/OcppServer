@@ -16,9 +16,10 @@ class ChangeAvailabilityService @Autowired constructor(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun changeAvailability(connectorId: Int, type: AvailabilityType) {
-        logger.info("Changing availability of connector ID '$connectorId' to type '$type'")
+    override fun changeAvailability(connectorId: Int, type: AvailabilityType, sessionIndex: String) {
+        logger.info("Changing availability of connector ID '$connectorId' to type '$type' | " +
+            "session index '$sessionIndex'")
         transactionService.closeAllOngoingTransactions(connectorId = connectorId)
-        serverRequestService.changeAvailability(connectorId = connectorId, type = type)
+        serverRequestService.changeAvailability(connectorId = connectorId, type = type, sessionIndex = sessionIndex)
     }
 }

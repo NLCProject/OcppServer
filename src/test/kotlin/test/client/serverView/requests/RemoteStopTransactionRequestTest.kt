@@ -21,7 +21,7 @@ class RemoteStopTransactionRequestTest : ServerRequestTest() {
     @Test
     fun sendRequest() {
         val transactionId = Ids.getRandomId()
-        val confirmation = serverRequestService.remoteStopTransaction(transactionId = transactionId)
+        val confirmation = serverRequestService.remoteStopTransaction(transactionId = transactionId, sessionIndex = Ids.getRandomUUIDString())
         assertEquals(RemoteStartStopStatus.Accepted, confirmation.status)
 
         val argumentCaptor = argumentCaptor<RemoteStopTransactionRequestEvent>()

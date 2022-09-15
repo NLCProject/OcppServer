@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*
  * REST controller for images.
  */
 @Controller
-@RequestMapping(path = ["transaction"])
+@RequestMapping(path = ["/transaction"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class TransactionController @Autowired constructor(
     entityService: TransactionService,

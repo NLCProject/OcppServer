@@ -9,6 +9,7 @@ interface IRemoteStartTransactionService {
      * Sends start transaction event. Creates a new transaction.
      *
      * @param connectorId .
+     * @param sessionIndex .
      */
-    fun start(connectorId: Int)
+    fun start(connectorId: Int, sessionIndex: String)
 }

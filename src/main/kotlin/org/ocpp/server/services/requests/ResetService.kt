@@ -16,9 +16,9 @@ class ResetService @Autowired constructor(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun reset(type: ResetType) {
-        logger.info("Reset smart home")
+    override fun reset(type: ResetType, sessionIndex: String) {
+        logger.info("Reset smart home | session index '$sessionIndex'")
         transactionService.closeAllOngoingTransactions()
-        serverRequestService.reset(type = type)
+        serverRequestService.reset(type = type, sessionIndex = sessionIndex)
     }
 }

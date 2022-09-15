@@ -7,6 +7,7 @@ import org.mockito.kotlin.argumentCaptor
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.ocpp.client.event.client.request.ResetRequestEvent
+import org.ocpp.client.utils.Ids
 import org.springframework.boot.test.context.TestComponent
 import org.springframework.boot.test.mock.mockito.SpyBean
 import org.springframework.context.event.EventListener
@@ -21,7 +22,7 @@ class ResetRequestTest : ServerRequestTest() {
     @Test
     fun sendRequest() {
         val type = ResetType.values().random()
-        val confirmation = serverRequestService.reset(type = type)
+        val confirmation = serverRequestService.reset(type = type, sessionIndex = Ids.getRandomUUIDString())
         assertEquals(ResetStatus.Accepted, confirmation.status)
 
         val argumentCaptor = argumentCaptor<ResetRequestEvent>()

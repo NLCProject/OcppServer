@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*
  * REST controller for notifications.
  */
 @Controller
-@RequestMapping(path = ["notification"])
+@RequestMapping(path = ["/notification"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class NotificationController @Autowired constructor(
     filterService: NotificationFilterService,

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*
  * REST controller for smart homes.
  */
 @Controller
-@RequestMapping(path = ["smart-home"])
+@RequestMapping(path = ["/smart-home"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class SmartHomeController @Autowired constructor(
     entityService: SmartHomeService,
@@ -48,10 +48,10 @@ class SmartHomeController @Autowired constructor(
      * @param connectorId .
      */
     @PostMapping(value = ["/unlockConnector"])
-    fun unlockConnector(@RequestParam connectorId: Int): ResponseEntity<*> =
+    fun unlockConnector(@RequestParam connectorId: Int, @RequestParam sessionIndex: String): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
-            unlockConnectorService.unlockConnector(connectorId = connectorId)
+            unlockConnectorService.unlockConnector(connectorId = connectorId, sessionIndex = sessionIndex)
         }
 
     /**
@@ -61,20 +61,28 @@ class SmartHomeController @Autowired constructor(
      * @param type Type of availability.
      */
     @PostMapping(value = ["/changeAvailability"])
-    fun changeAvailability(@RequestParam connectorId: Int, @RequestParam type: AvailabilityType): ResponseEntity<*> =
+    fun changeAvailability(
+        @RequestParam connectorId: Int,
+        @RequestParam type: AvailabilityType,
+        @RequestParam sessionIndex: String
+    ): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
-            changeAvailabilityService.changeAvailability(connectorId = connectorId, type = type)
+            changeAvailabilityService.changeAvailability(
+                connectorId = connectorId,
+                type = type,
+                sessionIndex = sessionIndex
+            )
         }
 
     /**
      * Clear cache of the client.
      */
     @PostMapping(value = ["/clearCache"])
-    fun clearCache(): ResponseEntity<*> =
+    fun clearCache(@RequestParam sessionIndex: String): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
-            clearCacheService.clearCache()
+            clearCacheService.clearCache(sessionIndex = sessionIndex)
         }
 
     /**
@@ -83,10 +91,10 @@ class SmartHomeController @Autowired constructor(
      * @param type Type of reset.
      */
     @PostMapping(value = ["/reset"])
-    fun reset(@RequestParam type: ResetType): ResponseEntity<*> =
+    fun reset(@RequestParam type: ResetType, @RequestParam sessionIndex: String): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
-            resetService.reset(type = type)
+            resetService.reset(type = type, sessionIndex = sessionIndex)
         }
 
     /**
@@ -95,10 +103,10 @@ class SmartHomeController @Autowired constructor(
      * @param connectorId Connector for which the transaction shall be started.
      */
     @PostMapping(value = ["/remoteStartTransaction"])
-    fun remoteStartTransaction(@RequestParam connectorId: Int): ResponseEntity<*> =
+    fun remoteStartTransaction(@RequestParam connectorId: Int, @RequestParam sessionIndex: String): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
-            remoteStartTransactionService.start(connectorId = connectorId)
+            remoteStartTransactionService.start(connectorId = connectorId, sessionIndex = sessionIndex)
         }
 
     /**
@@ -107,9 +115,9 @@ class SmartHomeController @Autowired constructor(
      * @param transactionId Transaction to stop.
      */
     @PostMapping(value = ["/remoteStopTransaction"])
-    fun remoteStopTransaction(@RequestParam transactionId: Int): ResponseEntity<*> =
+    fun remoteStopTransaction(@RequestParam transactionId: Int, @RequestParam sessionIndex: String): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
             userAuthenticationService.isPermitted()
-            remoteStopTransactionService.stop(transactionId = transactionId)
+            remoteStopTransactionService.stop(transactionId = transactionId, sessionIndex = sessionIndex)
         }
 }

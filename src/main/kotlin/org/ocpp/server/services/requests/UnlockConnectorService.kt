@@ -13,8 +13,8 @@ class UnlockConnectorService @Autowired constructor(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun unlockConnector(connectorId: Int) {
-        logger.info("Unlocking connector ID '$connectorId'")
-        serverRequestService.unlockConnector(connectorId = connectorId)
+    override fun unlockConnector(connectorId: Int, sessionIndex: String) {
+        logger.info("Unlocking connector ID '$connectorId' | session index '$sessionIndex'")
+        serverRequestService.unlockConnector(connectorId = connectorId, sessionIndex = sessionIndex)
     }
 }

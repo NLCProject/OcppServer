@@ -12,6 +12,7 @@ interface IChangeAvailabilityService {
      *
      * @param connectorId .
      * @param type Type of availability.
+     * @param sessionIndex .
      */
-    fun changeAvailability(connectorId: Int, type: AvailabilityType)
+    fun changeAvailability(connectorId: Int, type: AvailabilityType, sessionIndex: String)
 }

@@ -9,6 +9,7 @@ interface IRemoteStopTransactionService {
      * Sends stop transaction event. Closes affected transaction.
      *
      * @param transactionId .
+     * @param sessionIndex .
      */
-    fun stop(transactionId: Int)
+    fun stop(transactionId: Int, sessionIndex: String)
 }

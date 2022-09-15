@@ -20,8 +20,8 @@ class RemoteStopTransactionService @Autowired constructor(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    override fun stop(transactionId: Int) {
-        logger.info("Stopping transaction ID '$transactionId' via remote")
+    override fun stop(transactionId: Int, sessionIndex: String) {
+        logger.info("Stopping transaction ID '$transactionId' via remote | session index '$sessionIndex'")
         transactionService.updateTransaction(
             transactionId = transactionId,
             timestamp = DateTimeUtil.dateNow(),
@@ -30,6 +30,6 @@ class RemoteStopTransactionService @Autowired constructor(
             currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         )
 
-        serverRequestService.remoteStopTransaction(transactionId = transactionId)
+        serverRequestService.remoteStopTransaction(transactionId = transactionId, sessionIndex = sessionIndex)
     }
 }

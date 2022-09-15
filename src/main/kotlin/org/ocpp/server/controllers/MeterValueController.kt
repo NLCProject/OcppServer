@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*
  * REST controller for meter values.
  */
 @Controller
-@RequestMapping(path = ["meter-value"])
+@RequestMapping(path = ["/meter-value"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class MeterValueController @Autowired constructor(
     entityService: MeterValueService,

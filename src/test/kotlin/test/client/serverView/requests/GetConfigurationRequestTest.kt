@@ -11,7 +11,7 @@ class GetConfigurationRequestTest : ServerRequestTest() {
     @Test
     fun sendRequest() {
         val keys = arrayOf(Ids.getRandomIdString(), Ids.getRandomIdString())
-        val confirmation = serverRequestService.getConfiguration(keys = keys)
+        val confirmation = serverRequestService.getConfiguration(keys = keys, sessionIndex = Ids.getRandomUUIDString())
         assertEquals(1, confirmation.configurationKey.size)
         assertTrue(confirmation.configurationKey.first().readonly)
         assertEquals("TestKey", confirmation.configurationKey.first().key)

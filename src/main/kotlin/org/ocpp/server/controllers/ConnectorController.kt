@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*
  * REST controller for connectors.
  */
 @Controller
-@RequestMapping(path = ["connector"])
+@RequestMapping(path = ["/connector"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class ConnectorController @Autowired constructor(
     entityService: ConnectorService,

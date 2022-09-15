@@ -7,6 +7,8 @@ interface IClearCacheService {
 
     /**
      * Send clear cache event.
+     *
+     * @param sessionIndex .
      */
-    fun clearCache()
+    fun clearCache(sessionIndex: String)
 }
