@@ -20,7 +20,7 @@ class ClearCacheRequestTest : ServerRequestTest() {
 
     @Test
     fun sendRequest() {
-        val confirmation = serverRequestService.clearCache(sessionIndex = Ids.getRandomUUIDString())
+        val confirmation = serverRequestService.clearCache(sessionIndex = String())
         assertEquals(ClearCacheStatus.Accepted, confirmation.status)
         verify(eventListener, times(1)).handle(anyOrNull())
     }

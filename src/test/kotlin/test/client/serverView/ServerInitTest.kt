@@ -25,7 +25,7 @@ class ServerInitTest {
 
     @Test
     fun init() {
-        val ipAddress = "127.0.0.1"
+        val ipAddress = "192.168.56.1"
         service.init(ipAddress = ipAddress)
     }
 }

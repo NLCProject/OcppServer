@@ -39,7 +39,7 @@ class ClientInitTest {
     @SpyBean
     private lateinit var clientUnregisterService: IClientUnregisterService
 
-    private val ipAddress = "127.0.0.1"
+    private val ipAddress = "192.168.56.1"
 
     @AfterEach
     fun close() {

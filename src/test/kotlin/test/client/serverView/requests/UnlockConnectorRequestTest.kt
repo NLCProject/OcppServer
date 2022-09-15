@@ -21,7 +21,7 @@ class UnlockConnectorRequestTest : ServerRequestTest() {
     @Test
     fun sendRequest() {
         val connectorId = Ids.getRandomId()
-        val confirmation = serverRequestService.unlockConnector(connectorId = connectorId, sessionIndex = Ids.getRandomUUIDString())
+        val confirmation = serverRequestService.unlockConnector(connectorId = connectorId, sessionIndex = String())
         assertEquals(UnlockStatus.Unlocked, confirmation.status)
 
         val argumentCaptor = argumentCaptor<UnlockConnectorRequestEvent>()

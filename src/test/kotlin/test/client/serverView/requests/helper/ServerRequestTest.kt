@@ -26,17 +26,18 @@ abstract class ServerRequestTest {
     @Autowired
     protected lateinit var serverRequestService: IServerRequestService
 
-    protected val ipAddress = "127.0.0.1"
+    protected val ipAddress = "192.168.56.1"
 
     @BeforeEach
     fun start() {
-        serverInitService.init(ipAddress = ipAddress)
+        serverInitService.init(ipAddress = ipAddress, testMode = true)
         clientInitService.init(ipAddress = ipAddress)
+        Thread.sleep(5_000)
     }
 
     @AfterEach
     fun close() {
-        serverInitService.close()
         clientInitService.disconnect()
+        serverInitService.close()
     }
 }

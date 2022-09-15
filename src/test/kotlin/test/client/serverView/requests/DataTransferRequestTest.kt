@@ -23,7 +23,7 @@ class DataTransferRequestTest : ServerRequestTest() {
     fun sendRequest() {
         val vendorId = Ids.getRandomIdString()
         val data = Ids.getRandomIdString()
-        val confirmation = serverRequestService.dataTransfer(vendorId = vendorId, data = data, sessionIndex = Ids.getRandomUUIDString())
+        val confirmation = serverRequestService.dataTransfer(vendorId = vendorId, data = data, sessionIndex = String())
         assertEquals(DataTransferStatus.Accepted, confirmation.status)
         assertNull(confirmation.data)
 

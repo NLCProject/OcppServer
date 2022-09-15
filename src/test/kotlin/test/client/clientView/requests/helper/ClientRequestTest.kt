@@ -26,7 +26,7 @@ abstract class ClientRequestTest {
     @Autowired
     protected lateinit var clientRequestService: IClientRequestService
 
-    protected val ipAddress = "127.0.0.1"
+    protected val ipAddress = "192.168.56.1"
 
     @BeforeEach
     fun start() {

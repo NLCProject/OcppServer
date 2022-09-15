@@ -22,7 +22,7 @@ class ResetRequestTest : ServerRequestTest() {
     @Test
     fun sendRequest() {
         val type = ResetType.values().random()
-        val confirmation = serverRequestService.reset(type = type, sessionIndex = Ids.getRandomUUIDString())
+        val confirmation = serverRequestService.reset(type = type, sessionIndex = String())
         assertEquals(ResetStatus.Accepted, confirmation.status)
 
         val argumentCaptor = argumentCaptor<ResetRequestEvent>()

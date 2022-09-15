@@ -6,7 +6,6 @@ import org.mockito.kotlin.argumentCaptor
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.ocpp.client.event.client.request.ChangeAvailabilityRequestEvent
-import org.ocpp.client.event.server.ClientConnectedOnServerEvent
 import org.ocpp.client.utils.Ids
 import org.springframework.boot.test.context.TestComponent
 import org.springframework.boot.test.mock.mockito.SpyBean
@@ -19,18 +18,11 @@ class ChangeAvailabilityRequestTest : ServerRequestTest() {
     @SpyBean
     private lateinit var eventListener: EventTestListener
 
-    private var sessionIndex = ""
-
-    @EventListener
-    fun handle(event: ClientConnectedOnServerEvent) {
-        sessionIndex = event.sessionIndex.toString()
-    }
-
     @Test
     fun sendRequest() {
         val connectorId = Ids.getRandomId()
         val type = AvailabilityType.values().random()
-        serverRequestService.changeAvailability(connectorId = connectorId, type = type, sessionIndex = sessionIndex)
+        serverRequestService.changeAvailability(connectorId = connectorId, type = type, sessionIndex = String())
 
         val changeAvailabilityCaptor = argumentCaptor<ChangeAvailabilityRequestEvent>()
         verify(eventListener, times(1)).handle(changeAvailabilityCaptor.capture())

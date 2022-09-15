@@ -63,8 +63,8 @@ class ChangeAvailabilityServiceTest {
             currentUser = currentUser
         )
 
-        val sessionIndex = Ids.getRandomUUIDString()
-        service.changeAvailability(connectorId = connector1.externalId, type = type, sessionIndex = Ids.getRandomUUIDString())
+        val sessionIndex = String()
+        service.changeAvailability(connectorId = connector1.externalId, type = type, sessionIndex = String())
         transaction1 = transactionRepository.findById(id = transaction1.id, currentUser = currentUser)
         assertEquals(TransactionStatus.Finished, transaction1.status)
 

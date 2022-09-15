@@ -28,7 +28,7 @@ class RemoteStartTransactionRequestTest : ServerRequestTest() {
             connectorId = connectorId,
             idTag = idTag,
             profile = null,
-            sessionIndex = Ids.getRandomUUIDString()
+            sessionIndex = String()
         )
 
         assertEquals(RemoteStartStopStatus.Accepted, confirmation.status)
