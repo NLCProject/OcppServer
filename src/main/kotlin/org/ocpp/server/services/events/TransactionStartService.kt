@@ -8,7 +8,6 @@ import org.ocpp.server.entities.connectors.ConnectorService
 import org.ocpp.server.entities.meterValue.MeterValueService
 import org.ocpp.server.entities.sampledValue.SampledValueService
 import org.ocpp.server.entities.transaction.TransactionService
-import org.ocpp.server.services.authentication.IdTagAuthorizer
 import org.ocpp.server.services.events.interfaces.ITransactionStartService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,7 +25,6 @@ class TransactionStartService @Autowired constructor(
 
     override fun startTransaction(event: StartTransactionRequestEvent) {
         logger.info("Handling start transaction request for session index '${event.sessionIndex}'")
-        IdTagAuthorizer.authorizeAndThrow(idTag = event.request.idTag)
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         val connector = connectorService.findOrCreateConnector(
             externalId = event.request.connectorId,

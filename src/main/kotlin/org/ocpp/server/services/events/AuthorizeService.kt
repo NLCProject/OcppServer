@@ -6,7 +6,6 @@ import org.ocpp.client.event.server.request.AuthorizeRequestEvent
 import org.ocpp.server.entities.smartHome.SmartHomeEntity
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
 import org.ocpp.server.enums.SmartHomeStatus
-import org.ocpp.server.services.authentication.IdTagAuthorizer
 import org.ocpp.server.services.events.interfaces.IAuthorizeService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,7 +20,6 @@ class AuthorizeService @Autowired constructor(
 
     override fun authorize(event: AuthorizeRequestEvent) {
         logger.info("Authorize request received for session index '${event.sessionIndex}'")
-        IdTagAuthorizer.authorizeAndThrow(idTag = event.request.idTag)
         val optional = smartHomeRepository.findBySessionIndex(sessionIndex = event.sessionIndex.toString())
         if (!optional.isPresent)
             throw Exception("Smart home with session index '${event.sessionIndex}' not found")

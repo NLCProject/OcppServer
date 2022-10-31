@@ -8,7 +8,6 @@ import org.ocpp.server.entities.meterValue.MeterValueService
 import org.ocpp.server.entities.sampledValue.SampledValueService
 import org.ocpp.server.entities.transaction.TransactionService
 import org.ocpp.server.enums.TransactionStatus
-import org.ocpp.server.services.authentication.IdTagAuthorizer
 import org.ocpp.server.services.events.interfaces.ITransactionStopService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,7 +24,6 @@ class TransactionStopService @Autowired constructor(
 
     override fun stopTransaction(event: StopTransactionRequestEvent) {
         logger.info("Handling stop transaction request for session index '${event.sessionIndex}'")
-        IdTagAuthorizer.authorizeAndThrow(idTag = event.request.idTag)
         val currentUser = CurrentUserFactory.getCurrentUser(organisationId = Organisation.id)
         val transaction = transactionService.updateTransaction(
             transactionId = event.request.transactionId,
