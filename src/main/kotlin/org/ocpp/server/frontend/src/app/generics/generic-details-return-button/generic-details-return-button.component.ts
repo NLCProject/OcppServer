@@ -1,4 +1,5 @@
 import {Component, Input, NgZone} from '@angular/core';
+import { Location } from '@angular/common';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,7 +11,8 @@ export class GenericDetailsReturnButtonComponent {
 
   constructor(
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private location: Location
   ) { }
 
   @Input()
@@ -22,7 +24,15 @@ export class GenericDetailsReturnButtonComponent {
   @Input()
   public tabIndex: number | undefined;
 
+  @Input()
+  public forceBack: boolean = false;
+
   public returnToRoute(): void {
+    if (this.forceBack) {
+      this.location.back();
+      return;
+    }
+
     if (this.tabIndex) {
       this.ngZone.run(() => this.router.navigate([`/${this.parentRouterPath}`, { index: this.tabIndex }]));
     } else {

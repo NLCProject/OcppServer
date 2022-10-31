@@ -8,6 +8,7 @@ import org.battery.controller.util.controller.modbusSimulator.commands.ModbusReq
 import org.battery.controller.util.controller.modbusSimulator.commands.ModbusResponse
 import org.battery.controller.util.controller.register.Register
 import org.battery.controller.util.controller.register.descriptors.Descriptor
+import org.battery.controller.util.controller.register.descriptors.enums.DescriptorType
 import org.isc.utils.tests.TypescriptModelGenerator
 import org.junit.jupiter.api.Test
 import org.ocpp.server.Application
@@ -32,6 +33,7 @@ class TypescriptModelGeneratorTest {
                 ChargePointErrorCode::class.java,
                 ChargePointStatus::class.java,
                 AvailabilityType::class.java,
+                DescriptorType::class.java,
                 ModbusResponse::class.java,
                 ModbusRequest::class.java,
                 ModbusCommand::class.java,

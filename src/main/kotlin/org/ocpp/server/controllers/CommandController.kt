@@ -8,12 +8,14 @@ import org.ocpp.server.services.modbus.interfaces.IModbusCommandSendService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 
 /**
  * REST controller for Modbus commands.
  */
 @Controller
+@Transactional
 @RequestMapping(path = ["/command"])
 @CrossOrigin(origins = [CrossOriginData.origins], allowedHeaders = [CrossOriginData.allowedHeaders])
 class CommandController @Autowired constructor(

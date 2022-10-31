@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {CommandService} from "../../services/command.service";
-import {ModbusCommandDto} from "../../models/ModbusCommandDto";
-import {TranslationService} from "../../services/translation.service";
+import {ActivatedRoute} from '@angular/router';
+import {CommandService} from '../../services/command.service';
+import {ModbusCommandDto} from '../../models/ModbusCommandDto';
+import {TranslationService} from '../../services/translation.service';
+import {ModbusResponse} from "../../models/ModbusResponse";
 
 @Component({
   selector: 'app-command-details',
@@ -21,9 +22,24 @@ export class CommandDetailsComponent implements OnInit {
   public commandId = '';
   public loading = true;
   public dto: ModbusCommandDto | null = null;
+  public response: ModbusResponse | null = null;
 
   ngOnInit(): void {
     this.getId();
+  }
+
+  public runCommand(): void {
+    this.loading = true;
+    this.service.runCommand(this.smartHomeId, this.commandId).subscribe(
+      response => {
+        this.response = response;
+        this.loading = false;
+      },
+      error => {
+        this.translationService.showSnackbarOnError(error);
+        this.loading = false;
+      }
+    );
   }
 
   private getId(): void {

@@ -1,1 +1,13 @@
-<p>command-details works!</p>
+<app-generic-details-return-button [forceBack]="true"></app-generic-details-return-button>
+
+<div fxLayout="column" fxLayoutAlign="center center" *ngIf="dto">
+  <h3>{{ dto!!.i18nKey | translate }}</h3>
+</div>
+
+<button mat-fab
+        class="action-bar-first"
+        [class.spinner]="loading"
+        [disabled]="loading || !dto"
+        (click)="runCommand()">
+  <mat-icon>send</mat-icon>
+</button>
