@@ -1,5 +1,6 @@
 package org.ocpp.server.entities.smartHome
 
+import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
 import org.isc.utils.enums.I18nKey
 import org.isc.utils.enums.IconEnum
 import org.isc.utils.genericCrudl.services.ModelService
@@ -36,7 +37,17 @@ class SmartHomeModelService @Autowired constructor(
         model.image = imageModelService.findById(id = entity.imageId, currentUser = currentUser)
 
         if (entity.idTag.isNotEmpty())
-            model.availableCommands = SmartHomeCommandCache.getCommands(idTag = entity.idTag)
+            model.availableCommands = SmartHomeCommandCache
+                .getCommands(idTag = entity.idTag)
+                .map { convertCommand(command = it) }
+    }
+    
+    private fun convertCommand(command: ModbusCommand): NamedModel {
+        val model = NamedModel()
+        model.id = command.id
+        model.firstLine.text = command.i18nKey.name
+        model.firstLine.translate = true
+        return model
     }
 
     override fun createAbstractModel(entity: SmartHomeEntity, model: NamedModel, currentUser: CurrentUser) {

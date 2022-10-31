@@ -1,1 +1,9 @@
-<p>smart-home-command works!</p>
+<div fxLayout='column' fxLayoutAlign='start center' style='height: 100%;'>
+  <app-generic-list
+    *ngIf="model"
+    [smartHomeId]="model.id"
+    [models]="model.availableCommands"
+    [loading]='loading'
+    [routerPath]="'command'">
+  </app-generic-list>
+</div>

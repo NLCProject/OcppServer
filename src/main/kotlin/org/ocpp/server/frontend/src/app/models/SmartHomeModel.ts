@@ -1,6 +1,6 @@
 import {ImageModel} from './ImageModel';
 import {SmartHomeStatus} from './SmartHomeStatus';
-import {ModbusCommand} from './ModbusCommand';
+import {NamedModel} from './NamedModel';
 
 /**
  * Auto-generated file. Do NOT change, run test 'TypescriptModelGeneratorTest' instead
@@ -13,7 +13,7 @@ export class SmartHomeModel {
     authorized: boolean = false;
     image: ImageModel | null = null;
     status: SmartHomeStatus | null = null;
-    availableCommands: ModbusCommand[] = [];
+    availableCommands: NamedModel[] = [];
     id: string = '';
     organisationId: string = '';
     timestampCreated: number = 0;

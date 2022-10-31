@@ -13,6 +13,9 @@ export class ConnectorOverviewComponent {
   ) { }
 
   @Input()
+  public loading: boolean = false;
+
+  @Input()
   public smartHomeId: string = '';
 
   public getSmartHomeId(): string {

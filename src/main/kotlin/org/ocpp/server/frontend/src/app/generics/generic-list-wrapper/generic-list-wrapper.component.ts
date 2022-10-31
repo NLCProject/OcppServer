@@ -18,7 +18,7 @@ export class GenericListWrapperComponent implements OnInit {
   public service: RestHelperService<any, any> | undefined;
 
   @Input()
-  private loading = false;
+  public loading = false;
 
   @Input()
   public routerPath: string = '';

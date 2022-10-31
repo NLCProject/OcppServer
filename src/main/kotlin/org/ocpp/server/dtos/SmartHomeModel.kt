@@ -1,10 +1,10 @@
 package org.ocpp.server.dtos
 
-import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
 import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
+import org.isc.utils.models.NamedModel
 import org.ocpp.server.enums.SmartHomeStatus
 
 @GenerateTsModel
@@ -46,5 +46,5 @@ class SmartHomeModel : IscModel() {
     /**
      *
      */
-    var availableCommands: List<ModbusCommand> = emptyList()
+    var availableCommands: List<NamedModel> = emptyList()
 }

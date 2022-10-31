@@ -14,6 +14,9 @@ export class SmartHomeCommandsComponents implements OnInit {
   public id: string = '';
 
   @Input()
+  public loading: boolean = false;
+
+  @Input()
   public model: SmartHomeModel | undefined;
 
   ngOnInit(): void {

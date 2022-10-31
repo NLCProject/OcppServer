@@ -18,6 +18,7 @@
     <mat-tab label="{{ 'Commands' | translate }}" [disabled]="!id || !model || id?.length === 0 || loading">
       <app-smart-home-commands
         *ngIf="selectedTab === 1 && model"
+        [loading]="loading"
         [model]="model"
         [id]="id">
       </app-smart-home-commands>
@@ -26,6 +27,7 @@
     <mat-tab label="{{ 'Connectors' | translate }}" [disabled]="!id || !model || id?.length === 0 || loading">
       <app-connector-overview
         *ngIf="selectedTab === 2 && model"
+        [loading]="loading"
         [smartHomeId]="id">
       </app-connector-overview>
     </mat-tab>
