@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {SmartHomeOverviewComponent} from './components/smart-home-overview/smart-home-overview.component';
 import {SmartHomeDetailsOverviewComponent} from './components/smart-home-details-overview/smart-home-details-overview.component';
 import {ConnectorDetailsComponent} from './components/connector-details/connector-details.component';
+import {CommandDetailsComponent} from "./components/command-details/command-details.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
   }, {
     path: 'smart-home/overview',
     component: SmartHomeOverviewComponent
+  }, {
+    path: 'command/details/:id/:smartHomeId',
+    component: CommandDetailsComponent
   }, {
     path: '**',
     component: SmartHomeOverviewComponent
