@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CommandService} from '../../services/command.service';
-import {ModbusCommandDto} from '../../models/ModbusCommandDto';
+import {ModbusCacheObject} from '../../models/ModbusCacheObject';
 import {TranslationService} from '../../services/translation.service';
 import {ModbusResponse} from "../../models/ModbusResponse";
 
@@ -21,7 +21,7 @@ export class CommandDetailsComponent implements OnInit {
   public smartHomeId = '';
   public commandId = '';
   public loading = true;
-  public dto: ModbusCommandDto | null = null;
+  public dto: ModbusCacheObject | null = null;
   public response: ModbusResponse | null = null;
 
   ngOnInit(): void {
@@ -33,6 +33,7 @@ export class CommandDetailsComponent implements OnInit {
     this.service.runCommand(this.smartHomeId, this.commandId).subscribe(
       response => {
         this.response = response;
+        this.translationService.showSnackbar('Command Sent');
         this.loading = false;
       },
       error => {

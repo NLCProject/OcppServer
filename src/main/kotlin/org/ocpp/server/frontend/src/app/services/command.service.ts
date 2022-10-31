@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {RestHeaderService} from './rest-header.service';
 import {Observable} from 'rxjs';
-import { ModbusCommandDto } from '../models/ModbusCommandDto';
+import { ModbusCacheObject } from '../models/ModbusCacheObject';
 import {ModbusResponse} from '../models/ModbusResponse';
 
 @Injectable({
@@ -10,9 +10,9 @@ import {ModbusResponse} from '../models/ModbusResponse';
 export class CommandService extends RestHeaderService {
   path = 'command';
 
-  public getCommandById(smartHomeId: string, commandId: string): Observable<ModbusCommandDto> {
+  public getCommandById(smartHomeId: string, commandId: string): Observable<ModbusCacheObject> {
     const url = `${this.getBaseUrl(this.path)}/getCommandById?smartHomeId=${smartHomeId}&commandId=${commandId}`;
-    return this.http.get<ModbusCommandDto>(url, this.getHeaders());
+    return this.http.get<ModbusCacheObject>(url, this.getHeaders());
   }
 
   public runCommand(smartHomeId: string, commandId: string): Observable<ModbusResponse> {

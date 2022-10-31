@@ -3,7 +3,6 @@ package org.ocpp.server.services.events
 import org.battery.controller.util.controller.modbusSimulator.commands.CommandUUID
 import org.battery.controller.util.controller.modbusSimulator.commands.ModbusOnInit
 import org.battery.controller.util.controller.modbusSimulator.commands.ModbusResponse
-import org.battery.controller.util.controller.register.descriptors.value.ValueDescriptor
 import org.isc.utils.serialization.JsonSerialization
 import org.ocpp.client.event.server.request.ServerDataTransferRequestEvent
 import org.ocpp.server.entities.smartHome.SmartHomeRepository
@@ -45,7 +44,11 @@ class DataTransferService @Autowired constructor(
     }
 
     private fun handleResponse(response: ModbusResponse) {
-        logger.info("Handling response data | ${(response.value.descriptor as ValueDescriptor).value}")
-        // TODO
+        logger.info("Handling response data | ${response.value.descriptor.value}")
+        val smartHome = repository.findByIdTag(idTag = response.idTag)
+        if (!smartHome.isPresent)
+            return logger.warn("Smart home with ID tag '${response.idTag}' not found on init")
+
+        SmartHomeCommandCache.updateCommand(smartHomeId = smartHome.get().id, response = response)
     }
 }

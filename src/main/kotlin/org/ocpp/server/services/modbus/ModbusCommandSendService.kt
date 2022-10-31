@@ -21,8 +21,8 @@ class ModbusCommandSendService @Autowired constructor(
     override fun sendCommand(commandId: String, smartHomeId: String, currentUser: CurrentUser) {
         logger.info("Sending command ID '$commandId' to smart home with smart home ID '$smartHomeId'")
         val smartHome = smartHomeRepository.findById(id = smartHomeId, currentUser = currentUser)
-        val command = SmartHomeCommandCache.getCommandById(smartHomeId = smartHomeId, commandId = commandId)
-        val request = ModbusRequest(command = command, value = "") // Value to be implemented
+        val cacheObject = SmartHomeCommandCache.getCommandById(smartHomeId = smartHomeId, commandId = commandId)
+        val request = ModbusRequest(command = cacheObject.command, value = "") // Value to be implemented
         val data = super.encode(model = request)
         serverRequestService.dataTransfer(vendorId = "", sessionIndex = smartHome.sessionIndex, data = data)
         logger.info("Command ID '$commandId' sent to smart home ID '$smartHomeId'")
