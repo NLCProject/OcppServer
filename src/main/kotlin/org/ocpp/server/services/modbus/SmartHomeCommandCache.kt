@@ -16,22 +16,27 @@ object SmartHomeCommandCache {
     /**
      *
      */
-    fun registerCommands(idTag: String, commands: List<ModbusCommand>) {
-        logger.info("Registering commands for ID tag '$idTag'")
-        this.commands[idTag] = commands
+    fun registerCommands(smartHomeId: String, commands: List<ModbusCommand>) {
+        logger.info("Registering commands for smart home ID '$smartHomeId'")
+        this.commands[smartHomeId] = commands
     }
 
     /**
      *
      */
-    fun getCommands(idTag: String): List<ModbusCommand> = commands[idTag]
-        ?: throw Exception("No commands found for ID tag '$idTag'")
+    fun getCommandById(smartHomeId: String, commandId: String): ModbusCommand = getCommands(smartHomeId = smartHomeId)
+        .first { it.id == commandId }
 
     /**
      *
      */
-    fun clearByIdTag(idTag: String) {
-        logger.info("Clearing commands for ID tag '$idTag'")
-        commands.remove(idTag)
+    fun getCommands(smartHomeId: String): List<ModbusCommand> = commands[smartHomeId] ?: emptyList()
+
+    /**
+     *
+     */
+    fun clearByIdTag(smartHomeId: String) {
+        logger.info("Clearing commands for smart home ID '$smartHomeId'")
+        commands.remove(smartHomeId)
     }
 }

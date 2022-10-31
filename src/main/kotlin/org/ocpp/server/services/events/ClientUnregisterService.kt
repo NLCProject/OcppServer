@@ -32,7 +32,7 @@ class ClientUnregisterService @Autowired constructor(
 
     private fun removeClient(smartHome: SmartHomeEntity, currentUser: CurrentUser) {
         logger.info("Removing client ID '${smartHome.id}'")
-        SmartHomeCommandCache.clearByIdTag(idTag = smartHome.idTag)
+        SmartHomeCommandCache.clearByIdTag(smartHomeId = smartHome.id)
         smartHomeService.deleteEntity(id = smartHome.id, currentUser = currentUser)
     }
 }

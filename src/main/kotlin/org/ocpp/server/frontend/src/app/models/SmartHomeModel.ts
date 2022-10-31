@@ -10,6 +10,7 @@ export class SmartHomeModel {
     name: string = '';
     identifier: string = '';
     sessionIndex: string = '';
+    idTag: string = '';
     authorized: boolean = false;
     image: ImageModel | null = null;
     status: SmartHomeStatus | null = null;

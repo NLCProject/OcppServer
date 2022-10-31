@@ -8,6 +8,14 @@ import java.util.*
 interface ISmartHomeRepository : ICrudlRepository<SmartHomeEntity> {
 
     /**
+     * Find smart home by its ID tag.
+     *
+     * @param idTag .
+     * @return Optional of entity.
+     */
+    fun findByIdTag(idTag: String): Optional<SmartHomeEntity>
+
+    /**
      * Find smart home by its session index.
      *
      * @param sessionIndex .

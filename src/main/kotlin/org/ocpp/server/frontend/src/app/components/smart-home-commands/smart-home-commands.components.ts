@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {SmartHomeModel} from "../../models/SmartHomeModel";
 
 @Component({
@@ -6,7 +6,7 @@ import {SmartHomeModel} from "../../models/SmartHomeModel";
   templateUrl: './smart-home-commands.component.html',
   styleUrls: ['./smart-home-commands.component.scss']
 })
-export class SmartHomeCommandsComponents implements OnInit {
+export class SmartHomeCommandsComponents {
 
   constructor() { }
 
@@ -18,8 +18,4 @@ export class SmartHomeCommandsComponents implements OnInit {
 
   @Input()
   public model: SmartHomeModel | undefined;
-
-  ngOnInit(): void {
-  }
-
 }

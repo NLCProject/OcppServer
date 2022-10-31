@@ -1,6 +1,5 @@
 package org.ocpp.server.entities.smartHome
 
-import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
 import org.isc.utils.enums.I18nKey
 import org.isc.utils.enums.IconEnum
 import org.isc.utils.genericCrudl.services.ModelService
@@ -9,6 +8,7 @@ import org.isc.utils.models.NamedModel
 import org.isc.utils.models.filter.FilterParameters
 import org.isc.utils.utils.StringUtil
 import org.ocpp.server.dtos.SmartHomeModel
+import org.ocpp.server.entities.command.interfaces.ICommandModelService
 import org.ocpp.server.entities.image.ImageModelService
 import org.ocpp.server.entities.image.ImageRepository
 import org.ocpp.server.enums.SmartHomeStatus
@@ -21,7 +21,8 @@ class SmartHomeModelService @Autowired constructor(
     filterService: SmartHomeFilterService,
     private val repositoryService: SmartHomeRepository,
     private val imageRepoService: ImageRepository,
-    private val imageModelService: ImageModelService
+    private val imageModelService: ImageModelService,
+    private val commandModelService: ICommandModelService
 ) : ModelService<SmartHomeModel, SmartHomeEntity>(
     repositoryService = repositoryService,
     filterService = filterService,
@@ -35,19 +36,9 @@ class SmartHomeModelService @Autowired constructor(
         currentUser: CurrentUser
     ) {
         model.image = imageModelService.findById(id = entity.imageId, currentUser = currentUser)
-
-        if (entity.idTag.isNotEmpty())
-            model.availableCommands = SmartHomeCommandCache
-                .getCommands(idTag = entity.idTag)
-                .map { convertCommand(command = it) }
-    }
-    
-    private fun convertCommand(command: ModbusCommand): NamedModel {
-        val model = NamedModel()
-        model.id = command.id
-        model.firstLine.text = command.i18nKey.name
-        model.firstLine.translate = true
-        return model
+        model.availableCommands = SmartHomeCommandCache
+            .getCommands(smartHomeId = entity.id)
+            .map { commandModelService.convertToNamedModel(command = it) }
     }
 
     override fun createAbstractModel(entity: SmartHomeEntity, model: NamedModel, currentUser: CurrentUser) {

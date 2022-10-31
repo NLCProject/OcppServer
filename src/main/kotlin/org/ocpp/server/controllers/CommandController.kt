@@ -1,8 +1,8 @@
 package org.ocpp.server.controllers
 
-import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
 import org.isc.utils.genericCrudl.controller.CrossOriginData
 import org.isc.utils.genericCrudl.services.exceptionHandler.interfaces.IExceptionHandler
+import org.ocpp.server.entities.command.interfaces.ICommandModelService
 import org.ocpp.server.services.authentication.interfaces.IAuthenticationService
 import org.ocpp.server.services.modbus.interfaces.IModbusCommandSendService
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,19 +19,29 @@ import org.springframework.web.bind.annotation.*
 class CommandController @Autowired constructor(
     private val userAuthenticationService: IAuthenticationService,
     private val modbusCommandSendService: IModbusCommandSendService,
+    private val commandModelService: ICommandModelService,
     private val exceptionHandler: IExceptionHandler
 ) {
 
     /**
      *
      */
-    @PostMapping(value = ["/runCommand"])
-    fun runCommand(@RequestParam sessionIndex: String, @RequestParam command: ModbusCommand): ResponseEntity<*> =
+    @GetMapping(value = ["/getCommandById"])
+    fun getCommandById(@RequestParam smartHomeId: String, @RequestParam commandId: String): ResponseEntity<*> =
         exceptionHandler.executeGetOperation {
+            commandModelService.getById(smartHomeId = smartHomeId, commandId = commandId)
+        }
+
+    /**
+     *
+     */
+    @PostMapping(value = ["/runCommand"])
+    fun runCommand(@RequestParam smartHomeId: String, @RequestParam commandId: String): ResponseEntity<*> =
+        exceptionHandler.executeAnyOperation {
             val currentUser = userAuthenticationService.isPermitted()
             modbusCommandSendService.sendCommand(
-                command = command,
-                sessionIndex = sessionIndex,
+                commandId = commandId,
+                smartHomeId = smartHomeId,
                 currentUser = currentUser
             )
         }

@@ -11,5 +11,5 @@ interface IModbusCommandSendService {
     /**
      *
      */
-    fun sendCommand(command: ModbusCommand, sessionIndex: String, currentUser: CurrentUser)
+    fun sendCommand(commandId: String, smartHomeId: String, currentUser: CurrentUser)
 }

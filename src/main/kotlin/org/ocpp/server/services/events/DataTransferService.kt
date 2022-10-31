@@ -6,13 +6,17 @@ import org.battery.controller.util.controller.modbusSimulator.commands.ModbusRes
 import org.battery.controller.util.controller.register.descriptors.value.ValueDescriptor
 import org.isc.utils.serialization.JsonSerialization
 import org.ocpp.client.event.server.request.ServerDataTransferRequestEvent
+import org.ocpp.server.entities.smartHome.SmartHomeRepository
 import org.ocpp.server.services.events.interfaces.IDataTransferService
 import org.ocpp.server.services.modbus.SmartHomeCommandCache
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class DataTransferService : IDataTransferService, JsonSerialization() {
+class DataTransferService @Autowired constructor(
+    private val repository: SmartHomeRepository
+): IDataTransferService, JsonSerialization() {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
@@ -33,7 +37,11 @@ class DataTransferService : IDataTransferService, JsonSerialization() {
 
     private fun handleOnInit(onInit: ModbusOnInit) {
         logger.info("Handling on init data for ID tag '${onInit.idTag}'")
-        SmartHomeCommandCache.registerCommands(idTag = onInit.idTag, commands = onInit.availableCommands)
+        val smartHome = repository.findByIdTag(idTag = onInit.idTag)
+        if (!smartHome.isPresent)
+            return logger.warn("Smart home with ID tag '${onInit.idTag}' not found on init")
+
+        SmartHomeCommandCache.registerCommands(smartHomeId = smartHome.get().id, commands = onInit.availableCommands)
     }
 
     private fun handleResponse(response: ModbusResponse) {

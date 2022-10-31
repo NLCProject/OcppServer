@@ -13,6 +13,14 @@ class SmartHomeRepository @Autowired constructor(
 ) : RepositoryService<SmartHomeEntity>(repository = repository) {
 
     /**
+     * Find smart home by its ID tag.
+     *
+     * @param idTag .
+     * @return Optional of entity.
+     */
+    fun findByIdTag(idTag: String): Optional<SmartHomeEntity> = repository.findByIdTag(idTag = idTag)
+
+    /**
      * Find smart home by its session index.
      *
      * @param sessionIndex .

@@ -1,7 +1,9 @@
 package org.ocpp.server.dtos
 
 import org.isc.utils.annotations.GenerateTsModel
+import org.isc.utils.annotations.RestrictModelToEntityConversion
 import org.isc.utils.annotations.ValidateContent
+import org.isc.utils.enums.ConversionRestriction
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
 import org.isc.utils.models.NamedModel
@@ -27,6 +29,12 @@ class SmartHomeModel : IscModel() {
      */
     @ValidateContent(type = ValidationType.StringNotEmpty, required = true)
     var sessionIndex: String = String()
+
+    /**
+     *
+     */
+    @RestrictModelToEntityConversion(restriction = ConversionRestriction.Ignore)
+    var idTag: String = String()
 
     /**
      * Boolean if smart home has been authorized.
