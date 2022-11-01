@@ -5,6 +5,9 @@ import org.ocpp.server.entities.image.ImageEntity
 import org.springframework.data.jpa.repository.Query
 import java.util.*
 
+/**
+ * Image repository.
+ */
 interface IImageRepository : ICrudlRepository<ImageEntity> {
 
     /**

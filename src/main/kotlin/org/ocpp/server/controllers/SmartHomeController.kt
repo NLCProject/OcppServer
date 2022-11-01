@@ -46,6 +46,7 @@ class SmartHomeController @Autowired constructor(
      * Unlock a connector.
      *
      * @param connectorId .
+     * @param sessionIndex .
      */
     @PostMapping(value = ["/unlockConnector"])
     fun unlockConnector(@RequestParam connectorId: Int, @RequestParam sessionIndex: String): ResponseEntity<*> =
@@ -59,6 +60,7 @@ class SmartHomeController @Autowired constructor(
      *
      * @param connectorId .
      * @param type Type of availability.
+     * @param sessionIndex .
      */
     @PostMapping(value = ["/changeAvailability"])
     fun changeAvailability(
@@ -77,6 +79,8 @@ class SmartHomeController @Autowired constructor(
 
     /**
      * Clear cache of the client.
+     *
+     * @param sessionIndex .
      */
     @PostMapping(value = ["/clearCache"])
     fun clearCache(@RequestParam sessionIndex: String): ResponseEntity<*> =
@@ -89,6 +93,7 @@ class SmartHomeController @Autowired constructor(
      * Reset client.
      *
      * @param type Type of reset.
+     * @param sessionIndex .
      */
     @PostMapping(value = ["/reset"])
     fun reset(@RequestParam type: ResetType, @RequestParam sessionIndex: String): ResponseEntity<*> =
@@ -101,6 +106,7 @@ class SmartHomeController @Autowired constructor(
      * Start transaction at the client remotely.
      *
      * @param connectorId Connector for which the transaction shall be started.
+     * @param sessionIndex .
      */
     @PostMapping(value = ["/remoteStartTransaction"])
     fun remoteStartTransaction(@RequestParam connectorId: Int, @RequestParam sessionIndex: String): ResponseEntity<*> =
@@ -113,6 +119,7 @@ class SmartHomeController @Autowired constructor(
      * Stop transaction at the client remotely.
      *
      * @param transactionId Transaction to stop.
+     * @param sessionIndex .
      */
     @PostMapping(value = ["/remoteStopTransaction"])
     fun remoteStopTransaction(@RequestParam transactionId: Int, @RequestParam sessionIndex: String): ResponseEntity<*> =

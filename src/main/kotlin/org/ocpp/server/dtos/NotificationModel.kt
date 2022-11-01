@@ -6,6 +6,9 @@ import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.genericCrudl.models.IscModel
 import org.ocpp.server.enums.NotificationViewStatus
 
+/**
+ * Notification Model.
+ */
 @GenerateTsModel
 class NotificationModel : IscModel() {
 

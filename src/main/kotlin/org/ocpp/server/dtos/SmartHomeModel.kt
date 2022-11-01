@@ -9,6 +9,9 @@ import org.isc.utils.genericCrudl.models.IscModel
 import org.isc.utils.models.NamedModel
 import org.ocpp.server.enums.SmartHomeStatus
 
+/**
+ * Smart home model.
+ */
 @GenerateTsModel
 class SmartHomeModel : IscModel() {
 

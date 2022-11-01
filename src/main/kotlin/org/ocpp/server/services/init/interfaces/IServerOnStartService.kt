@@ -4,12 +4,12 @@ import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 
 /**
- *
+ * Starts OCPP server on start up.
  */
 interface IServerOnStartService {
 
     /**
-     *
+     * Starts OCPP server on start up and fires ready event.
      */
     @EventListener(ApplicationReadyEvent::class)
     fun startServer()

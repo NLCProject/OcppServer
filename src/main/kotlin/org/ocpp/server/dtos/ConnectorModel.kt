@@ -5,6 +5,9 @@ import org.isc.utils.annotations.ValidateContent
 import org.isc.utils.enums.ValidationType
 import org.isc.utils.genericCrudl.models.IscModel
 
+/**
+ * Connector model.
+ */
 @GenerateTsModel
 class ConnectorModel : IscModel() {
 

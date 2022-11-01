@@ -5,6 +5,9 @@ import eu.chargetime.ocpp.model.core.ValueFormat
 import org.isc.utils.annotations.GenerateTsModel
 import org.isc.utils.genericCrudl.models.IscModel
 
+/**
+ * Sampled value model.
+ */
 @GenerateTsModel
 class SampledValueModel : IscModel() {
 

@@ -26,7 +26,11 @@ class CommandController @Autowired constructor(
 ) {
 
     /**
+     * Get command by ID.
      *
+     * @param smartHomeId .
+     * @param commandId .
+     * @return Modbus command.
      */
     @GetMapping(value = ["/getCommandById"])
     fun getCommandById(@RequestParam smartHomeId: String, @RequestParam commandId: String): ResponseEntity<*> =
@@ -35,7 +39,10 @@ class CommandController @Autowired constructor(
         }
 
     /**
+     * Run command.
      *
+     * @param smartHomeId .
+     * @param commandId .
      */
     @PostMapping(value = ["/runCommand"])
     fun runCommand(@RequestParam smartHomeId: String, @RequestParam commandId: String): ResponseEntity<*> =
