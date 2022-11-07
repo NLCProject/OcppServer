@@ -8,6 +8,7 @@ import org.battery.controller.util.controller.modbusSimulator.commands.ModbusReq
 import org.battery.controller.util.controller.modbusSimulator.commands.ModbusResponse
 import org.battery.controller.util.controller.register.Register
 import org.battery.controller.util.controller.register.descriptors.Descriptor
+import org.battery.controller.util.controller.register.descriptors.bit.Bit
 import org.battery.controller.util.controller.register.descriptors.enums.DescriptorType
 import org.isc.utils.tests.TypescriptModelGenerator
 import org.junit.jupiter.api.Test
@@ -44,7 +45,8 @@ class TypescriptModelGeneratorTest {
                 DataType::class.java,
                 Register::class.java,
                 Location::class.java,
-                Reason::class.java
+                Reason::class.java,
+                Bit::class.java
             )
         )
     }
